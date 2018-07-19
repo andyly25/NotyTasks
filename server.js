@@ -1,10 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
+const favicon = require('serve-favicon');
+const path = require('path');
 
 const app = express();
 app.use(morgan('common'));
 
 app.use(express.static('public'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // both runServer and closeServer need to access the same
 // server object, so we declare `server` here, and then when
@@ -44,6 +47,11 @@ function closeServer() {
     });
   });
 }
+
+// catch everything that doesn't go to the api
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'index.html'))
+})
 
 // if server.js is called directly (aka, with `node server.js`), this block
 // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
