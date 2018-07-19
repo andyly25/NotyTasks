@@ -16,10 +16,13 @@ const TaskSchema = new mongoose.Schema({
   },
   time: {
     // Not sure
-    type: String
+    type: Date,
   },
   category: {
     type: String,
   }
 });
+
+module.exports = mongoose.model('Task', TaskSchema);
+
 

@@ -10,3 +10,4 @@ In the end the thing that it has in common is that you edit and manage tasks.
 
 ### Other ideas
 - Users on add/edit can create their own categories
+- a way to notify completion

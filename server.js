@@ -1,13 +1,18 @@
 const express = require('express');
 const morgan = require('morgan');
-const favicon = require('serve-favicon');
-const path = require('path');
+// const favicon = require('serve-favicon');
+// const path = require('path');
+
+const taskRouter = require('./routes/tasks.router');
 
 const app = express();
 app.use(morgan('common'));
 
 app.use(express.static('public'));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.json());
+app.use('/tasks', taskRouter);
+
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // both runServer and closeServer need to access the same
 // server object, so we declare `server` here, and then when
