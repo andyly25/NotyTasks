@@ -1,0 +1,45 @@
+{
+  "name": "notytasks",
+  "version": "0.0.1",
+  "description": "Know Thy Tasks! A useful task manager to help with the clutter of life.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server",
+    "test": "mocha --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/birisora/NotyTasks.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongoose",
+    "mongodb",
+    "jwt"
+  ],
+  "author": "Andy Ly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/birisora/NotyTasks/issues"
+  },
+  "homepage": "https://github.com/birisora/NotyTasks#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.4",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "faker": "^4.1.0",
+    "mocha": "^5.2.0"
+  }
+}
