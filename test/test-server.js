@@ -1,6 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const { TEST_DATABASE_URL } = requie('../config');
+const { TEST_DATABASE_URL } = require('../config');
 
 const { app, runServer, closeServer } = require('../server');
 
