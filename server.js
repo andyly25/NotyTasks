@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const path = require('path');
 
 const { PORT, DATABASE_URL } = require('./config');
 // const favicon = require('serve-favicon');
@@ -32,7 +33,7 @@ function runServer (databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     // deprication warning solved
     const options = { useNewUrlParser: true };
-    mongoose.connect(databaseUrl, options, err => {
+    mongoose.connect(databaseUrl, options, (err) => {
     // mongoose.connect(databaseUrl, err => {
       if (err) {
         return reject(err);
@@ -41,9 +42,9 @@ function runServer (databaseUrl, port = PORT) {
         console.log(`Your app is listening on port ${port}`);
         resolve();
       })
-        .on('error', err => {
+        .on('error', (error) => {
           mongoose.disconnect();
-          reject(err);
+          reject(error);
         });
     });
   });
@@ -51,11 +52,11 @@ function runServer (databaseUrl, port = PORT) {
 
 // this function closes the server, and returns a promise. we'll
 // use it in our integration tests later.
-function closeServer() {
+function closeServer () {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
       console.log('Closing server');
-      server.close(err => {
+      server.close((err) => {
         if (err) {
           return reject(err);
         }
@@ -71,7 +72,8 @@ app.get('*', (req, res) => {
 });
 
 // if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+// runs. but we also export the runServer command so other code 
+// (for instance, test code) can start the server as needed.
 if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
 }

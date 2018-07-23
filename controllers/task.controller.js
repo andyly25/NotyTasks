@@ -7,6 +7,7 @@ exports.getTasks = (req, res) => {
     .find()
     .then((tasks) => {
       res.json(tasks.map(task => task));
+      console.log('successfull grabbed tasks');
     });
 };
 
@@ -16,7 +17,7 @@ exports.postTask = (req, res) => {
   Task
     .create(req.body)
     .then((task) => {
-      // console.log(task);
+      console.log('successfully added in new task');
       res.json(task);
     })
     .catch((err) => {

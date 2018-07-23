@@ -3,7 +3,6 @@
 const router = require('express').Router();
 const taskController = require('../controllers/task.controller');
 
-
 // fix this to work later
 router.get('/', taskController.getTasks);
 router.post('/', taskController.postTask);
