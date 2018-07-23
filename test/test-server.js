@@ -1,5 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const { TEST_DATABASE_URL } = requie('../config');
 
 const { app, runServer, closeServer } = require('../server');
 
@@ -12,7 +13,7 @@ chai.use(chaiHttp);
 describe('Status', function () {
   // before tests run, we activate the server
   before(function () {
-    return runServer();
+    return runServer(TEST_DATABASE_URL);
   });
 
   // close server after our tests
