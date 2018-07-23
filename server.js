@@ -68,7 +68,7 @@ function closeServer() {
 // catch everything that doesn't go to the api
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'index.html'))
-})
+});
 
 // if server.js is called directly (aka, with `node server.js`), this block
 // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.

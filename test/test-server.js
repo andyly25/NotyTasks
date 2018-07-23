@@ -1,8 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const { TEST_DATABASE_URL } = require('../config');
 
 const { app, runServer, closeServer } = require('../server');
+const { TEST_DATABASE_URL } = require('../config');
 
 // Using expect style syntax in tests
 const expect = chai.expect;
@@ -27,7 +27,9 @@ describe('Status', function () {
       .request(app)
       .get('/')
       .then(function (res) {
+        expect(res).to.exist;
         expect(res).to.have.status(200);
-      })
+        expect(res).to.be.html;
+      });
   });
 });
