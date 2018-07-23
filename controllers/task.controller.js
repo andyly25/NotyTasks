@@ -21,20 +21,3 @@ exports.postTask = (req, res) => {
       console.log(err);
     })
 }
-
-// exports.postTask = (req, res) => {
-//   Task
-//     .create(req.body)
-//     .then(task => {
-//       res.json(task.serialize())      
-//     })
-// }
-
-
-// exports.postTask = (req, res) => {
-//   Task
-//     .create(req.body)
-//     .then(task => {
-//       res.json(task.serialize())      
-//     })
-// }
