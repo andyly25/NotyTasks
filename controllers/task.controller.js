@@ -7,7 +7,7 @@ exports.getTasks = (req, res) => {
     .find()
     .then((tasks) => {
       res.json(tasks.map(task => task));
-      console.log('successfull grabbed tasks');
+      console.log('successfully grabbed tasks');
     });
 };
 
@@ -30,7 +30,7 @@ exports.deleteTask = (req, res) => {
   Task
     .findByIdAndRemove(req.params.id)
     // ShoppingList.delete(req.params.id);
-    .then ((task) => {
+    .then((task) => {
       console.log(`Deleted task item \`${req.params.id}\``);
       res.status(204).end();
       res.json({ id: task._id });

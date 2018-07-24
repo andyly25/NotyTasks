@@ -1,5 +1,5 @@
-const bcrypt    = require('bcryptjs');
-const mongoose  = require('mongoose');
+const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
@@ -11,7 +11,7 @@ const UserSchema = mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: true
   },
   firstName: {
     type: String,
@@ -24,10 +24,6 @@ const UserSchema = mongoose.Schema({
   tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }]
 });
 
-
-// to object is mongoose package, might be able to replace serialize
-
-
 UserSchema.methods.serialize = function () {
   return {
     username: this.username,
@@ -38,4 +34,13 @@ UserSchema.methods.serialize = function () {
   };
 };
 
-module.exports = mongoose.model('User', UserSchema);
+UserSchema.methods.validatePassword = function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
+UserSchema.statics.hashPassword = function (password) {
+  return bcrypt.hash(password, 10);
+};
+
+const User = mongoose.model('User', UserSchema);
+module.exports = User;
