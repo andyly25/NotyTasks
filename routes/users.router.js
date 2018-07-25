@@ -1,5 +1,6 @@
-// work on later
+
 'use strict';
+
 const bodyParser = require('body-parser');
 const userController = require('../controllers/user.controller');
 const router = require('express').Router();

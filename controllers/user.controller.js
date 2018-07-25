@@ -1,6 +1,6 @@
-// work on later
-// const Task = require('../models/task.model');
+
 'use strict';
+
 const User = require('../models/user.model');
 
 // Post to register a new user
