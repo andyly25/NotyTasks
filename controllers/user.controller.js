@@ -115,3 +115,13 @@ exports.postUser = (req, res) => {
       res.status(500).json({ code: 500, message: 'Internal server error' });
     });
 };
+
+exports.getUser = (req, res) => {
+  return User
+    .find()
+    .then(users => res.json(users.map(user => user.serialize())))
+    .catch((err) => {
+      res.status(500).json({ message: 'Internal server error' });
+      console.log(err);
+    });
+};

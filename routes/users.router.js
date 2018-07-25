@@ -6,5 +6,6 @@ const router = require('express').Router();
 const jsonParser = bodyParser.json();
 
 router.post('/', jsonParser, userController.postUser);
+router.get('/', userController.getUser);
 
 module.exports = router;
