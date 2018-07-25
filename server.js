@@ -12,6 +12,7 @@ const { PORT, DATABASE_URL } = require('./config');
 const app = express();
 
 const taskRouter = require('./routes/tasks.router');
+const userRouter = require('./routes/users.router');
 
 app.use(morgan('common'));
 app.use(express.static('public'));
@@ -19,6 +20,7 @@ app.use(express.static('public'));
 // using body parser instead
 app.use(bodyParser.json());
 app.use('/tasks', taskRouter);
+app.use('/users', userRouter);
 
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
