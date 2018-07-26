@@ -38,4 +38,11 @@ exports.deleteTask = (req, res) => {
 };
 
 // Using PUT
-// exports.putTask
+exports.putTask = (req, res) => {
+  Task
+    .findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((task) => {
+      res.json(task);
+      console.log(`Updated task item \`${req.params.id}\``);
+    });
+};

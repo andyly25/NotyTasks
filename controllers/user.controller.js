@@ -48,7 +48,7 @@ exports.postUser = (req, res) => {
 
   const sizedFields = {
     username: {
-      min: 5
+      min: 1
     },
     password: {
       min: 10,
@@ -75,7 +75,8 @@ exports.postUser = (req, res) => {
     });
   }
 
-  let { username, password, firstName = '', lastName = '', tasks = [] } = req.body;
+  let { username, password, firstName = '', lastName = '' } = req.body;
+  // let { username, password, firstName = '', lastName = '', tasks = [] } = req.body;
   // username and password comes in pre-trimmerd, otherwise error
   firstName = firstName.trim();
   lastName = lastName.trim();
@@ -101,7 +102,7 @@ exports.postUser = (req, res) => {
         password: hash,
         firstName,
         lastName,
-        tasks
+        // tasks
       });
     })
     .then((user) => {

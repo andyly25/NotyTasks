@@ -1,15 +1,14 @@
 
-'user strict';
+'use strict';
 
 const express = require('express');
 const passport = require('passport');
-const bodyParser = require('body-parser');
 const authController = require('../controllers/auth.controller');
 
 const router = express.Router();
 
 const localAuth = passport.authenticate('local', { session: false });
-router.use(bodyParser.json());
+
 // provides a username and password to login
 router.post('/login', localAuth, authController.postLogin);
 

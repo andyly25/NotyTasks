@@ -36,16 +36,9 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-const jwtAuth = passport.authenticate('jwt', { session: false });
-// A protected endpoint which needs a valid JWT to access it
-app.get('/protected', jwtAuth, (req, res) => {
-  return res.json({
-    data: 'rosebud'
-  });
-});
-
 app.use(express.static('public'));
 app.use(bodyParser.json());
+
 app.use('/tasks', taskRouter);
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
