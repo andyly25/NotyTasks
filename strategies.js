@@ -5,17 +5,17 @@ const { Strategy: LocalStrategy } = require('passport-local');
 // assigns strategy export to name JwtStrategy using obj destructuring
 const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 
-const { User } = require('./models/user.model');
+const User = require('./models/user.model');
 const { JWT_SECRET } = require('./config');
 
 const localStrategy = new LocalStrategy((username, password, callback) => {
   let user;
   User.findOne({ username: username })
-    .then((_user) => {
+    .then(_user => {
       user = _user;
       if (!user) {
-        // return a rejected promise so we break out of chain of .thens
-        // errors handled in catch block
+        // Return a rejected promise so we break out of the chain of .thens.
+        // Any errors like this will be handled in the catch block.
         return Promise.reject({
           reason: 'LoginError',
           message: 'Incorrect username or password'
@@ -23,7 +23,7 @@ const localStrategy = new LocalStrategy((username, password, callback) => {
       }
       return user.validatePassword(password);
     })
-    .then((isValid) => {
+    .then(isValid => {
       if (!isValid) {
         return Promise.reject({
           reason: 'LoginError',
@@ -32,7 +32,7 @@ const localStrategy = new LocalStrategy((username, password, callback) => {
       }
       return callback(null, user);
     })
-    .catch((err) => {
+    .catch(err => {
       if (err.reason === 'LoginError') {
         return callback(null, false, err);
       }
@@ -43,9 +43,9 @@ const localStrategy = new LocalStrategy((username, password, callback) => {
 const jwtStrategy = new JwtStrategy(
   {
     secretOrKey: JWT_SECRET,
-    // look for JWT as a bearer auth header
+    // Look for the JWT as a Bearer auth header
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
-    // Only allows HS256 tokens - same as the ones issued
+    // Only allow HS256 tokens - the same as the ones we issue
     algorithms: ['HS256']
   },
   (payload, done) => {
