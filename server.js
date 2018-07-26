@@ -1,28 +1,54 @@
-// server.js file
 
+'use strict';
+
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const passport = require('passport');
 const path = require('path');
 
 const { PORT, DATABASE_URL } = require('./config');
-// const favicon = require('serve-favicon');
-// const path = require('path');
+
 const app = express();
 
 const taskRouter = require('./routes/tasks.router');
 const userRouter = require('./routes/users.router');
+const authRouter = require('./routes/auths.router');
 
+const { localStrategy, jwtStrategy } = require('./strategies');
+
+// Logging
 app.use(morgan('common'));
+
+// CORS
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+  if (req.method === 'OPTIONS') {
+    return res.send(204);
+  }
+  next();
+});
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
+const jwtAuth = passport.authenticate('jwt', { session: false });
+// A protected endpoint which needs a valid JWT to access it
+app.get('/protected', jwtAuth, (req, res) => {
+  return res.json({
+    data: 'rosebud'
+  });
+});
+
 app.use(express.static('public'));
-// app.use(express.json());
-// using body parser instead
 app.use(bodyParser.json());
 app.use('/tasks', taskRouter);
 app.use('/users', userRouter);
-
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use('/auth', authRouter);
 
 // both runServer and closeServer need to access the same
 // server object, so we declare `server` here, and then when
