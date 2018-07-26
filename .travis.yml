@@ -1,7 +1,7 @@
 language: node_js
 node_js: node
 services:
-  - mongodb
+- mongodb
 deploy:
   provider: heroku
   api_key:
@@ -9,3 +9,6 @@ deploy:
   app: notytasks
   on:
     repo: birisora/NotyTasks
+env:
+  global:
+    secure: fzt+mjZFIuK4gpxXYzK2KgfNF179wO882xtRNX+88aGJvUUAM1MEozQc/QwffVNtKIJ1bZxLw1Lpr/7veDUziZVGgoqIaI4E6NvJj5ydhkEXFvTfdREUK44dfEpFcDWivPHqxAY306OyZ3MnhzxoB0pJDLPhjuRNjW5kbbtTetGralNqf9kpIpvh61bjBIeV8SV/BVPW+hfVKUDxBPKdX4iykUM4b2taZsePFMf9i11/+Gku7AnqMVBgZQzDYEaMZK43QFQuY67p8/If91zVtRVVDkJ6gkSHPm3mrPboKyYBCaKMo+fcXIYEksB9svAm+jGzLOTxvYa7xIQcsGb/2HYm44IdaRXAe4vi1IDmr6ltEFMLtA6kKdybgpNVBgR3ryIQ0rPXeiceQ5/L15K4NoQVdK2hztk2fN1oGYn5NrLgOKmRc56kHvPdZiamfN5MKGQcWDL8A3D/n2WyUSXVxTd8Fk+QWM6puGKiLP++KBHw1+cgRAPcwdgVUWCqYeerNTch+733l+UnB39ip6whkrQr+VUtu6SfFZWQBY5vUXSB2bxV+esjylZWu1NoLY5mMK4EwtJDYFH6C0f61AG1UPLDY/a1mLjiPqp5oUsafu25U/AyX/OW6kTsAd8QXP/Uok/kEEzawzaaXL/zEs4SPJEQ6R56QtVLn6c6q33uAo0=
