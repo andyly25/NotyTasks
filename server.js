@@ -57,7 +57,6 @@ function runServer (databaseUrl, port = PORT) {
     // deprication warning solved
     const options = { useNewUrlParser: true };
     mongoose.connect(databaseUrl, options, (err) => {
-    // mongoose.connect(databaseUrl, err => {
       if (err) {
         return reject(err);
       }
