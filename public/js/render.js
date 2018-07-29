@@ -17,13 +17,13 @@ const res = [...Array(4)].map((_, i) => {
 const render = (() => {
 
   const tasks = () => {
-    $('.card2').html(res);
+    $('.container').html(res);
   };
 
   // Here's our variable for our basic DOM
   const dom = () => {
     $('#main_content').html(
-      `<div class="card2"></div>`
+      `<div class="container"></div>`
     );
   };
   return {
