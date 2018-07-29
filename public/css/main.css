@@ -102,44 +102,54 @@ body {
   height: 100%;
 }
 
-main {
-    display: flex;
+/* main {
+
     width: 100%;
     height: 100%;
-    background-color: #8e44ad;
-    margin: 0;
-    /* centers content into middle */
-    justify-content: center;
-    align-items: center;
-}
 
+}
+ */
 /* 
  * https://medium.com/flexbox-and-grids/how-to-create-horizontally-scrollable-sections-with-flexbox-60d860f539b2
  * testing how to make scrolling horizontal
  */
 .card {
     display: flex;
-    background-color: #fff;
+    /* background-color: #000; */
     min-width: 100%;
     min-height: 200px;
     /* makes browser scroll only card section */
     overflow-x: auto;
     padding: 0;
 }
+.card2 {
+    /* display: flex; */
+    width: 100%;
+    height: 100%;
+    background-color: #8e44ad;
+    margin: 0;
+    /* centers content into middle */
+    /* justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+}
 
 /* hides the scroll bar */
 .card::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .card--content {
-  background-color: #e74c3c;
-  min-width: 400px;
-  margin: 5px;
-  list-style-type: none;
+    background-color: #e74c3c;
+    min-width: 400px;
+    margin: 5px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-
 
 
 
