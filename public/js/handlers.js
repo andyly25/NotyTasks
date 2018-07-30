@@ -24,7 +24,6 @@ const handlers = (function () {
         .catch((err) => {
           console.log(err);
         });
-
     });
   }
 
@@ -36,11 +35,24 @@ const handlers = (function () {
       alert('log in attempt!');
       const loginElement = $(e.currentTarget);
       const loginUser = {
-        username: loginElement.find("username_entry"),
-        password: loginElement.find("password_entry")
+        username: loginElement.find(".username_entry").val(),
+        password: loginElement.find(".password_entry").val()
       };
+      console.log("loginUser info", loginUser);
+      api.create('/auth/login', loginUser)
+        .then((res) => {
+          store.authToken = res.authToken;
+          console.log("res.authToken", res.authToken);
+        })
+        .then(() => {
+          render.tasks();
+          console.log("log in success!");
+        })
+        .catch((err) => {
+          console.log(err);
+      });
     });
-  };  
+  }
 
   function callEventListeners () {
     handleSignupPressed();
