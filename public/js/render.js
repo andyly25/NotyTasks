@@ -20,7 +20,7 @@ function loginSigninScreen () {
     <h2>Site introduction</h2>
     <p>some Image</p>
     <section class="login_signin">
-      <form id='login' class='login_css'>
+      <form class='login_css login_form'>
         <fieldset>
           <legend>Login</legend>
           <ul class="flex-outer">
@@ -39,17 +39,17 @@ function loginSigninScreen () {
         </fieldset>
       </form>
 
-      <form id='signup' class='signup_css'>
+      <form class='signup_css signup_form'>
         <fieldset>
         <legend>Sign Up</legend>
           <ul class="flex-outer">
             <li>
               <label for="first-name">First Name</label>
-              <input type="text" id="first-name" placeholder="Enter your first name here">
+              <input type="text" class="firstName_entry" placeholder="Enter your first name here">
             </li>
             <li>
               <label for="last-name">Last Name</label>
-              <input type="text" id="last-name" placeholder="Enter your last name here">
+              <input type="text" class="lastName_entry" placeholder="Enter your last name here">
             </li>
             <li>
               <label for="username">username</label>
