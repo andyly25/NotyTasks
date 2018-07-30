@@ -68,11 +68,11 @@ video {
  * Remove default fieldset styles.
  */
 
-fieldset {
+/* fieldset {
     border: 0;
     margin: 0;
     padding: 0;
-}
+} */
 
 /*
  * Allow only vertical resizing of textareas.
@@ -98,17 +98,10 @@ textarea {
    ========================================================================== */
 html,
 body {
-  width: 100%;
-  height: 100%;
-}
-
-/* main {
-
     width: 100%;
     height: 100%;
-
 }
- */
+
 /* 
  * https://medium.com/flexbox-and-grids/how-to-create-horizontally-scrollable-sections-with-flexbox-60d860f539b2
  * testing how to make scrolling horizontal
@@ -126,7 +119,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: #8e44ad;
-    margin: 0;
+    margin: 0 auto;
 }
 
 /* hides the scroll bar */
@@ -144,7 +137,80 @@ body {
     align-items: center;
 }
 
+/* 
+    Sign up css styles
+    https://webdesign.tutsplus.com/tutorials/building-responsive-forms-with-flexbox--cms-26767
+ */
 
+fieldset legend {
+    font-size: 1.5em;
+}
+
+.container * {
+    box-sizing: border-box;
+}
+
+.login_css {
+    margin: 20px auto;
+}
+
+.flex-outer {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flex-outer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.flex-outer li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-outer > li:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+    padding: 8px;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+
+/* .flex-outer > li > label + * {
+  flex: 1 0 220px;
+}
+ */
+.flex-outer li p {
+    margin: 0;
+}
+
+.flex-outer li input:not([type='checkbox']) {
+    padding: 15px;
+    border: none;
+}
+
+.flex-outer li button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+}
 
 
 
@@ -240,8 +306,18 @@ body {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+@media only screen and (min-width: 320px) {
     /* Style adjustments for viewports that meet the condition */
+    .flex-outer > li > label + * {
+        flex: 1 0 100%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    /* Style adjustments for viewports that meet the condition */
+    .flex-outer > li > label + * {
+        flex: 1 0 220px;
+    }
 }
 
 @media print,
