@@ -51,7 +51,7 @@ exports.postUser = (req, res) => {
       min: 1
     },
     password: {
-      min: 10,
+      min: 8,
       // bcrypt truncates after 72 characters
       max: 72
     }

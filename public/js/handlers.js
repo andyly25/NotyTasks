@@ -8,14 +8,23 @@ const handlers = (function () {
     $(".signup_form").on("submit", (e) => {
       e.preventDefault();
 
-      alert('sign in attempt!');
+      alert('sign up attempt!');
       const signupElement = $(e.currentTarget);
       const signupUser = {
-        firstName: signupElement.find("firstName_entry"),
-        lastName: signupElement.find("lastName_entry"),
-        username: signupElement.find("username_entry"),
-        password: signupElement.find("password_entry")
+        firstName: signupElement.find(".firstName_entry").val(),
+        lastName: signupElement.find(".lastName_entry").val(),
+        username: signupElement.find(".username_entry").val(),
+        password: signupElement.find(".password_entry").val()
       };
+      api.create('/users', signupUser)
+        .then((res) => {
+          signupElement[0].reset();
+          console.log('signup success');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
     });
   }
 

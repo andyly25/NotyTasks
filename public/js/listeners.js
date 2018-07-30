@@ -1,5 +1,2 @@
-// // event listeners located here
-// const attachListeners = (() => () => {
-//   $('.signup_form').on('submit', 'form', handlers.handleLoginPressed);
-//   $('.signup_form').on('submit', 'form', handlers.handleSignupPressed);
-// })();
+// event listeners located here
+// Work on after I get the api to work with signup and login
