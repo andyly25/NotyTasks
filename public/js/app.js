@@ -1,6 +1,6 @@
 // Starting our app here!
 $(() => {
   render.dom();
-  handlers.callEventListeners();
+  callEventListeners();
   // render.tasks();
 });

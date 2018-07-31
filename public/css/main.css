@@ -96,10 +96,32 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+/* background colors not official, just for testing purposes */
+
 html,
 body {
     width: 100%;
     height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 2;
+    background-color: #8e44ad;
+}
+
+header {
+    background: #235420;
+}
+
+footer {
+    background: #543;
+    height: 100px;
 }
 
 /* 
@@ -118,7 +140,7 @@ body {
 .container {
     width: 100%;
     height: 100%;
-    background-color: #8e44ad;
+    /* background-color: #8e44ad; */
     margin: 0 auto;
 }
 

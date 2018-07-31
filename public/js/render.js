@@ -45,11 +45,11 @@ function loginSigninScreen () {
           <ul class="flex-outer">
             <li>
               <label for="first-name">First Name</label>
-              <input type="text" class="firstName_entry" placeholder="Enter your first name here">
+              <input type="text" class="firstName_entry" placeholder="Enter your first name here" value="someuser">
             </li>
             <li>
               <label for="last-name">Last Name</label>
-              <input type="text" class="lastName_entry" placeholder="Enter your last name here">
+              <input type="text" class="lastName_entry" placeholder="Enter your last name here" value="someuser">
             </li>
             <li>
               <label for="username">username</label>
@@ -57,7 +57,7 @@ function loginSigninScreen () {
             </li>
             <li>
               <label for="password">password</label>
-              <input type="password" class="password_entry" placeholder="Enter your password here">
+              <input type="password" class="password_entry" placeholder="Enter your password here" value="someuser">
             </li>
             <li>
               <button type="submit">Submit</button>
@@ -68,6 +68,45 @@ function loginSigninScreen () {
     </section>
   `;
 }
+
+const form = {
+  classes: "createtask-css createtask-form",
+  legend: "Create Task",
+  inputs: [
+    {
+      labelFor: "first-name",
+      label: "First Name",
+      type: "text",
+      class: "firstName_entry",
+      placeholder: "Enter your first name here"
+    }
+  ]
+};
+
+const createForm = (form) => {
+  return `
+    <form class="${form.classes}">
+      <fieldset>
+        <legend>${form.legend}</legend>
+          <ul class="flex-outer">
+          ${form.inputs.map(input => {
+            return `
+              <li>
+                <label for="${input.labelFor}">${input.label}</label>
+                <input type="text" class="firstName_entry" placeholder="Enter your first name here" value="someuser">
+              </li>
+            `
+            })}
+            <li>
+              <button type="submit">Submit</button>
+            </li>
+          </ul>
+        </fieldset>
+    </form>
+  `;
+};
+
+console.log(createForm(form));
 
 const render = (() => {
 
