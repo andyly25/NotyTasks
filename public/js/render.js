@@ -15,88 +15,25 @@ const res = [...Array(4)].map((_, i) => {
   `;
 });
 
-function loginSigninScreen () {
-  return `
-    <h2>Site introduction</h2>
-    <p>some Image</p>
-    <section class="login_signin">
-      <form class='login_css login_form'>
-        <fieldset>
-          <legend>Login</legend>
-          <ul class="flex-outer">
-            <li>
-              <label for="username">Username:</label>
-              <input type="text" name="username" class="username_entry" value="" placeholder="Username here">
-            </li>
-            <li>
-              <label for="password">Password:</label>
-              <input type="password" name="password" class="password_entry" value="" placeholder="Password here">
-            </li>
-            <li>
-              <button type="submit">Login</button>
-            </li>
-          </ul>
-        </fieldset>
-      </form>
-
-      <form class='signup_css signup_form'>
-        <fieldset>
-        <legend>Sign Up</legend>
-          <ul class="flex-outer">
-            <li>
-              <label for="first-name">First Name</label>
-              <input type="text" class="firstName_entry" placeholder="Enter your first name here" value="someuser">
-            </li>
-            <li>
-              <label for="last-name">Last Name</label>
-              <input type="text" class="lastName_entry" placeholder="Enter your last name here" value="someuser">
-            </li>
-            <li>
-              <label for="username">username</label>
-              <input type="text" class="username_entry" placeholder="Enter your username here">
-            </li>
-            <li>
-              <label for="password">password</label>
-              <input type="password" class="password_entry" placeholder="Enter your password here" value="someuser">
-            </li>
-            <li>
-              <button type="submit">Submit</button>
-            </li>
-          </ul>
-        </fieldset>
-      </form>
-    </section>
-  `;
-}
-
-const form = {
-  classes: "createtask-css createtask-form",
-  legend: "Create Task",
-  inputs: [
-    {
-      labelFor: "first-name",
-      label: "First Name",
-      type: "text",
-      class: "firstName_entry",
-      placeholder: "Enter your first name here"
-    }
-  ]
-};
-
 const createForm = (form) => {
   return `
     <form class="${form.classes}">
       <fieldset>
         <legend>${form.legend}</legend>
           <ul class="flex-outer">
-          ${form.inputs.map(input => {
+          ${form.inputs.map((input) => {
             return `
               <li>
                 <label for="${input.labelFor}">${input.label}</label>
-                <input type="text" class="firstName_entry" placeholder="Enter your first name here" value="someuser">
+                <input 
+                  type="${input.type}" 
+                  name="${input.name}" 
+                  class="${input.class}" 
+                  placeholder="${input.placeholder}">
               </li>
-            `
-            })}
+            `;
+            // .join('') removed the random commas between list elements
+            }).join('')} 
             <li>
               <button type="submit">Submit</button>
             </li>
@@ -106,7 +43,16 @@ const createForm = (form) => {
   `;
 };
 
-console.log(createForm(form));
+function loginSigninScreen () {
+  return `
+    <h2>Site introduction</h2>
+    <p>some Image</p>
+    <section class="login_signin">
+      ${createForm(loginForm)}
+      ${createForm(signupForm)}
+    </section>
+  `;
+}
 
 const render = (() => {
 
