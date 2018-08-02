@@ -55,21 +55,22 @@ function loginSigninScreen () {
 }
 
 function taskScreen () {
+  console.log('task screen yay!');
   return `
-    <h2>Site introduction</h2>
+    <h2>Task Screen</h2>
     <p>some Image</p>
-    <section class="login-signin">
+    <section class="task-screen">
       ${createForm(createtaskForm)}
     </section>
   `;
 }
 
 const render = (() => {
-
   const tasks = () => {
-    // GOAL: try to grab all the content of a todo store into tasks
+    // GOAL: try to grab all the content and store into tasks
     // as well add HTML necessary
-    $('.container').html(res);
+    // $('.container').html(res);
+    $('.container').html(taskScreen());
   };
 
   // Here's our variable for our basic DOM

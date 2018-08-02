@@ -2,6 +2,7 @@
 
 const store = (function () {
   return {
-    authToken: ''
+    authToken: '',
+    tasks: []
   };
 }());

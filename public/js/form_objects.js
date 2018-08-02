@@ -64,55 +64,55 @@ const signupForm = {
 // needs: title, image, content, time, category
 // there might be a drop down menu for already created categories
 const createtaskForm = {
-  classes: "createtask-css createtask-form",
-  legend: "Create Task",
+  classes: 'createtask-css createtask-form',
+  legend: 'Create Task',
   inputs: [
     {
-      labelFor: 'task-title',
+      labelFor: 'title',
       label: 'Title:',
       type: 'text',
-      name: 'task-title',
+      name: 'title',
       class: 'title-entry',
       placeholder: 'Enter title of task'
     },
     {
-      labelFor: 'task-image',
+      labelFor: 'image',
       label: 'Image:',
-      type: 'url',
-      name: 'task-image',
+      type: 'text',
+      name: 'image',
       class: 'image-entry',
       placeholder: 'Optional, enter image URL'
     },
     {
-      labelFor: 'task-content',
+      labelFor: 'content',
       label: 'Content:',
       type: 'text',
-      name: 'text-content',
+      name: 'content',
       class: 'content-entry',
       placeholder: 'Text content here'
     },
     // datetime-local has limited support, best use date and time separately
+    // {
+    //   labelFor: 'task-date',
+    //   label: 'Date:',
+    //   type: 'date',
+    //   name: 'task-date',
+    //   class: 'date-entry',
+    //   placeholder: ''
+    // },
     {
-      labelFor: 'task-date',
-      label: 'Date:',
-      type: 'date',
-      name: 'task-date',
-      class: 'date-entry',
-      placeholder: ''
-    },
-    {
-      labelFor: 'task-time',
+      labelFor: 'time',
       label: 'Time:',
       type: 'time',
-      name: 'task-time',
+      name: 'time',
       class: 'time-entry',
       placeholder: ''
     },
     {
-      labelFor: 'category-time',
+      labelFor: 'category',
       label: 'Category:',
       type: 'text',
-      name: 'category-time',
+      name: 'category',
       class: 'category-entry',
       placeholder: ''
     }
