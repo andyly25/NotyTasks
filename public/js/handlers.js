@@ -10,10 +10,10 @@ const handlers = (function () {
     alert('sign up attempt!');
     const signupElement = $(e.currentTarget);
     const signupUser = {
-      firstName: signupElement.find(".firstName_entry").val(),
-      lastName: signupElement.find(".lastName_entry").val(),
-      username: signupElement.find(".username_entry").val(),
-      password: signupElement.find(".password_entry").val()
+      firstName: signupElement.find(".firstName-entry").val(),
+      lastName: signupElement.find(".lastName-entry").val(),
+      username: signupElement.find(".username-entry").val(),
+      password: signupElement.find(".password-entry").val()
     };
     api.create('/users', signupUser)
       .then((res) => {
@@ -32,8 +32,8 @@ const handlers = (function () {
     alert('log in attempt!');
     const loginElement = $(e.currentTarget);
     const loginUser = {
-      username: loginElement.find(".username_entry").val(),
-      password: loginElement.find(".password_entry").val()
+      username: loginElement.find(".username-entry").val(),
+      password: loginElement.find(".password-entry").val()
     };
     console.log("loginUser info", loginUser);
     api.create('/auth/login', loginUser)

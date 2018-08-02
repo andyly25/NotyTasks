@@ -47,9 +47,19 @@ function loginSigninScreen () {
   return `
     <h2>Site introduction</h2>
     <p>some Image</p>
-    <section class="login_signin">
+    <section class="login-signin">
       ${createForm(loginForm)}
       ${createForm(signupForm)}
+    </section>
+  `;
+}
+
+function taskScreen () {
+  return `
+    <h2>Site introduction</h2>
+    <p>some Image</p>
+    <section class="login-signin">
+      ${createForm(createtaskForm)}
     </section>
   `;
 }

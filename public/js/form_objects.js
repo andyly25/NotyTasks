@@ -1,5 +1,5 @@
 const loginForm = {
-  classes: 'login_css login_form',
+  classes: 'login-css login-form',
   legend: 'login',
   inputs: [
     {
@@ -7,7 +7,7 @@ const loginForm = {
       label: 'Username:',
       type: 'text',
       name: 'username',
-      class: 'username_entry',
+      class: 'username-entry',
       placeholder: 'Username here'
     },
     {
@@ -15,14 +15,14 @@ const loginForm = {
       label: 'Password:',
       type: 'password',
       name: 'password',
-      class: 'password_entry',
+      class: 'password-entry',
       placeholder: 'Password here'
     }
   ]
 };
 
 const signupForm = {
-  classes: 'signup_css signup_form',
+  classes: 'signup-css signup-form',
   legend: 'Sign Up',
   inputs: [
     {
@@ -30,7 +30,7 @@ const signupForm = {
       label: 'First Name:',
       type: 'text',
       name: 'first-name',
-      class: 'firstName_entry',
+      class: 'firstName-entry',
       placeholder: 'Enter your first name here'
     },
     {
@@ -38,7 +38,7 @@ const signupForm = {
       label: 'Last Name:',
       type: 'text',
       name: 'last-name',
-      class: 'lastName_entry',
+      class: 'lastName-entry',
       placeholder: 'Enter your first name here'
     },
     {
@@ -46,7 +46,7 @@ const signupForm = {
       label: 'Username:',
       type: 'text',
       name: 'username',
-      class: 'username_entry',
+      class: 'username-entry',
       placeholder: 'Username here'
     },
     {
@@ -54,23 +54,67 @@ const signupForm = {
       label: 'Password:',
       type: 'password',
       name: 'password',
-      class: 'password_entry',
+      class: 'password-entry',
       placeholder: 'Password here'
     }
   ]
 };
 
-// Sample form need to turn into task
-const form = {
+// create task form
+// needs: title, image, content, time, category
+// there might be a drop down menu for already created categories
+const createtaskForm = {
   classes: "createtask-css createtask-form",
   legend: "Create Task",
   inputs: [
     {
-      labelFor: "first-name",
-      label: "First Name",
-      type: "text",
-      class: "firstName_entry",
-      placeholder: "Enter your first name here"
+      labelFor: 'task-title',
+      label: 'Title:',
+      type: 'text',
+      name: 'task-title',
+      class: 'title-entry',
+      placeholder: 'Enter title of task'
+    },
+    {
+      labelFor: 'task-image',
+      label: 'Image:',
+      type: 'url',
+      name: 'task-image',
+      class: 'image-entry',
+      placeholder: 'Optional, enter image URL'
+    },
+    {
+      labelFor: 'task-content',
+      label: 'Content:',
+      type: 'text',
+      name: 'text-content',
+      class: 'content-entry',
+      placeholder: 'Text content here'
+    },
+    // datetime-local has limited support, best use date and time separately
+    {
+      labelFor: 'task-date',
+      label: 'Date:',
+      type: 'date',
+      name: 'task-date',
+      class: 'date-entry',
+      placeholder: ''
+    },
+    {
+      labelFor: 'task-time',
+      label: 'Time:',
+      type: 'time',
+      name: 'task-time',
+      class: 'time-entry',
+      placeholder: ''
+    },
+    {
+      labelFor: 'category-time',
+      label: 'Category:',
+      type: 'text',
+      name: 'category-time',
+      class: 'category-entry',
+      placeholder: ''
     }
   ]
 };
