@@ -1,19 +1,4 @@
 // Similar to how our page would render
-const res = [...Array(4)].map((_, i) => {
-  return `
-    <h2>Some Category</h2>
-    <ul class="card">
-      <li class="card--content"><a href="#">Hello</a> something</li>
-      <li class="card--content"><a href="#">Hello</a> was</li>
-      <li class="card--content"><a href="#">Hello</a> here</li>
-      <li class="card--content"><a href="#">Hello</a> test</li>
-      <li class="card--content"><a href="#">Hello</a> text</li>
-      <li class="card--content"><a href="#">Hello</a> k</li>
-      <li class="card--content"><a href="#">Hello</a> apple</li>
-      <li class="card--content"><a href="#">Hello</a> sauce</li>
-    </ul>
-  `;
-});
 
 const createForm = (form) => {
   return `
@@ -29,7 +14,9 @@ const createForm = (form) => {
                   type="${input.type}" 
                   name="${input.name}" 
                   class="${input.class}" 
-                  placeholder="${input.placeholder}">
+                  placeholder="${input.placeholder}"
+                  value="${input.value ? input.value : ''}"
+                  >
               </li>
             `;
             // .join('') removed the random commas between list elements
@@ -43,6 +30,19 @@ const createForm = (form) => {
   `;
 };
 
+// will fill out eventually
+function tasksScreen () {
+  const taskList = store.tasks.map((task) => `
+    <h2>${task.category}</h2>
+    <img src="${task.image}">
+    <ul class="card">
+      <h3>${task.title}</h3>
+      <li class="card--content">${task.content}</li>
+    </ul>
+    `);
+  return taskList.join('');
+}
+
 function loginSigninScreen () {
   return `
     <h2>Site introduction</h2>
@@ -54,7 +54,7 @@ function loginSigninScreen () {
   `;
 }
 
-function taskScreen () {
+function createTaskScreen () {
   console.log('task screen yay!');
   return `
     <h2>Task Screen</h2>
@@ -66,23 +66,21 @@ function taskScreen () {
 }
 
 const render = (() => {
-  const tasks = () => {
-    // GOAL: try to grab all the content and store into tasks
-    // as well add HTML necessary
-    // $('.container').html(res);
-    $('.container').html(taskScreen());
-  };
-
-  // Here's our variable for our basic DOM
-  const dom = () => {
-    $('#main_content').html(
-      `<div class="container">
-        ${loginSigninScreen()}
-      </div>`
-    );
+  // one possibility switch statements
+  const screen = () => {
+    switch (store.screen) {
+      case 'login':
+        $('.container').html(loginSigninScreen());
+        break;
+      case 'tasks':
+        $('.container').html(tasksScreen());
+        break;
+      case 'create-task':
+        $('.container').html(createTaskScreen());
+        break;
+    }
   };
   return {
-    tasks,
-    dom
+    screen
   };
 })();

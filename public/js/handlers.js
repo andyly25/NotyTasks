@@ -42,8 +42,8 @@ const handlers = (function () {
         console.log('res.authToken', res.authToken);
       })
       .then(() => {
-        // render.tasks();
-        render.tasks();
+        store.screen = 'create-task';
+        render.screen();
         console.log('log in success!');
       })
       .catch((err) => {
@@ -51,34 +51,27 @@ const handlers = (function () {
       });
   }
 
-  function handleTaskSubmitPressed (e) {
-    e.preventDefault();
-
-    console.log('task create attempt!');
-    const signupElement = $(e.currentTarget);
-    alert('handle Task pressed');
-  }
-
   // create Task Handler
   function handleCreateTaskPressed (e) {
     e.preventDefault();
 
-    alert('task create attempt!');
+    console.log('task create attempt!');
     const taskElement = $(e.currentTarget);
     const taskInput = {
       title: taskElement.find('.title-entry').val(),
-      image: taskElement.find('.image-entry').val() || '',
+      image: taskElement.find('.image-entry').val(),
       content: taskElement.find('.content-entry').val(),
       time: taskElement.find('.date-entry').val(),
-      category: taskElement.find('.category-entry').val() || ''
+      category: taskElement.find('.category-entry').val()
     };
     console.log(taskInput);
     // Create a task
     api.create('/tasks', taskInput)
       .then((res) => {
         console.log('inside task create', res);
-        store.tasks = res;
-        render.tasks();
+        store.addToTasks(res);
+        store.screen = 'tasks';
+        render.screen();
       })
       .catch((err) => { console.log(err); });
   }
@@ -86,7 +79,6 @@ const handlers = (function () {
   return {
     handleSignupPressed,
     handleLoginPressed,
-    handleCreateTaskPressed,
-    handleTaskSubmitPressed
+    handleCreateTaskPressed
   };
 }());

@@ -13,7 +13,7 @@ exports.getTasks = (req, res) => {
 
 // Using POST
 exports.postTask = (req, res) => {
-  // console.log(req.body);
+  console.log("some user from POST", req.user);
   Task
     .create(req.body)
     .then((task) => {

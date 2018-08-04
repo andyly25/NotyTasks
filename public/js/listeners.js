@@ -2,8 +2,8 @@
 // Work on after I get the api to work with signup and login
 
 const callEventListeners = () => {
-  $('.signup-form').on('submit', handlers.handleSignupPressed);
-  $('.login-form').on('submit', handlers.handleLoginPressed);
+  $('#main-content').on('submit', '.signup-form', handlers.handleSignupPressed);
+  $('#main-content').on('submit', '.login-form', handlers.handleLoginPressed);
   // $('.createtask-form').on('submit', handlers.handleCreateTaskPressed);
-  $('.createtask-form').on('submit', handlers.handleTaskSubmitPressed);
+  $('#main-content').on('submit', '.createtask-form', handlers.handleCreateTaskPressed);
 };

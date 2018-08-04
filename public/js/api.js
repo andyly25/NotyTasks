@@ -37,30 +37,28 @@ const api = (function () {
     });
   };
 
-  const update = (path, obj) => {
-    return $.ajax({
-      type: 'PUT',
-      url: path,
-      contentType: 'application/json',
-      dataType: 'json',
-      data: JSON.stringify(obj),
-      headers: { 'Authorization': `Bearer ${store.authToken}` }
-    });
-  };
+  // const update = (path, obj) => {
+  //   return $.ajax({
+  //     type: 'PUT',
+  //     url: path,
+  //     contentType: 'application/json',
+  //     dataType: 'json',
+  //     data: JSON.stringify(obj),
+  //     headers: { 'Authorization': `Bearer ${store.authToken}` }
+  //   });
+  // };
 
-  const destroy = (path) => {
-    return $.ajax({
-      type: 'DELETE',
-      url: path,
-      dataType: 'json',
-      headers: { 'Authorization': `Bearer ${store.authToken}` }
-    });
-  };
+  // const destroy = (path) => {
+  //   return $.ajax({
+  //     type: 'DELETE',
+  //     url: path,
+  //     dataType: 'json',
+  //     headers: { 'Authorization': `Bearer ${store.authToken}` }
+  //   });
+  // };
 
   return {
     create,
-    read,
-    update,
-    destroy
+    read
   };
 }());
