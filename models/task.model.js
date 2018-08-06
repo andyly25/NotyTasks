@@ -16,7 +16,8 @@ const TaskSchema = new mongoose.Schema({
   },
   time: {
     // Not sure
-    type: Date
+    type: Date,
+    default: Date.now
   },
   category: {
     type: String,

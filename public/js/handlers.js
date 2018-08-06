@@ -43,7 +43,7 @@ const handlers = (function () {
       })
       .then(() => {
         store.screen = 'create-task';
-        render.screen();
+        render();
         console.log('log in success!');
       })
       .catch((err) => {
@@ -71,12 +71,19 @@ const handlers = (function () {
         console.log('inside task create', res);
         store.addToTasks(res);
         store.screen = 'tasks';
-        render.screen();
+        render();
       })
       .catch((err) => { console.log(err); });
   }
 
+  function handleLogoPressed (e) {
+    e.preventDefault();
+    store.screen = 'login';
+    render();
+  }
+
   return {
+    handleLogoPressed,
     handleSignupPressed,
     handleLoginPressed,
     handleCreateTaskPressed

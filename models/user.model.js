@@ -24,6 +24,16 @@ const UserSchema = mongoose.Schema({
   tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }]
 });
 
+UserSchema.pre('find', function (next) {
+  this.populate('tasks');
+  next();
+});
+
+UserSchema.pre('findOne', function (next) {
+  this.populate('tasks');
+  next();
+});
+
 UserSchema.methods.serialize = function () {
   return {
     username: this.username,

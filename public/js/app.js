@@ -1,6 +1,6 @@
 // Starting our app here!
 $(() => {
   callEventListeners();
-  render.screen();
-  
+  // render.screen();
+  render();
 });
