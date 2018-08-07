@@ -28,23 +28,21 @@ const handlers = (function () {
   // login handler
   function handleLoginPressed (e) {
     e.preventDefault();
-
-    console.log('log in attempt!');
     const loginElement = $(e.currentTarget);
     const loginUser = {
       username: loginElement.find('.username-entry').val(),
       password: loginElement.find('.password-entry').val()
     };
-    console.log('loginUser info', loginUser);
+    // rename create later possibly post
     api.create('/auth/login', loginUser)
       .then((res) => {
         store.authToken = res.authToken;
-        console.log('res.authToken', res.authToken);
+        return api.read('/tasks');
       })
-      .then(() => {
+      .then((tasks) => {
+        store.addAllTasks(tasks);
         store.screen = 'create-task';
         render();
-        console.log('log in success!');
       })
       .catch((err) => {
         console.log(err);
@@ -64,7 +62,6 @@ const handlers = (function () {
       time: taskElement.find('.date-entry').val(),
       category: taskElement.find('.category-entry').val()
     };
-    console.log(taskInput);
     // Create a task
     api.create('/tasks', taskInput)
       .then((res) => {
@@ -82,10 +79,23 @@ const handlers = (function () {
     render();
   }
 
+  function handleTaskDeletePressed (e) {
+    const taskElement = $(e.currentTarget);
+    const taskId = taskElement.closest('.task').data('id');
+    
+    api.remove(`/tasks/${taskId}`)
+      .then(() => {
+        console.log("inside delete pressed");
+        store.findAndRemove(taskId);
+        render();
+      })
+  }
+
   return {
     handleLogoPressed,
     handleSignupPressed,
     handleLoginPressed,
-    handleCreateTaskPressed
+    handleCreateTaskPressed,
+    handleTaskDeletePressed
   };
 }());

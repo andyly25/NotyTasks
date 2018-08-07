@@ -7,10 +7,10 @@ const taskController = require('../controllers/task.controller');
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 // fix this to work later
-router.get('/', taskController.getTasks);
+router.get('/', jwtAuth, taskController.getTasks);
 // router.get('/:id', taskController.getTaskId);
 router.post('/', jwtAuth, taskController.postTask);
-router.delete('/:id', taskController.deleteTask);
-router.put('/:id', taskController.putTask);
+router.delete('/:id', jwtAuth, taskController.deleteTask);
+router.put('/:id', jwtAuth, taskController.putTask);
 
 module.exports = router;

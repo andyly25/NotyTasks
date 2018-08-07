@@ -159,6 +159,12 @@ footer {
     align-items: center;
 }
 
+.task{
+    background: black;
+    color: white;
+}
+
+
 /* 
     Sign up css styles
     https://webdesign.tutsplus.com/tutorials/building-responsive-forms-with-flexbox--cms-26767

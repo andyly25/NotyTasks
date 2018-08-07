@@ -48,12 +48,12 @@ const createForm = (form) => {
 // will fill out eventually
 function tasksScreen () {
   const taskList = store.tasks.map((task) => `
-    <h2>${task.category}</h2>
-    <img src="${task.image}">
-    <ul class="card">
+    <div class="task" data-id="${task._id}">
+      <h2>${task.category}</h2>
       <h3>${task.title}</h3>
-      <li class="card--content">${task.content}</li>
-    </ul>
+      <p>${task._id}</p>
+      <input class="task-delete" type="button" value="-">
+    </div>
     `);
   return taskList.join('');
 }

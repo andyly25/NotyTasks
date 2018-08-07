@@ -7,4 +7,5 @@ const callEventListeners = () => {
   $('#main-content').on('submit', '.login-form', handlers.handleLoginPressed);
   // $('.createtask-form').on('submit', handlers.handleCreateTaskPressed);
   $('#main-content').on('submit', '.createtask-form', handlers.handleCreateTaskPressed);
+  $('#main-content').on('click', '.task-delete', handlers.handleTaskDeletePressed);
 };

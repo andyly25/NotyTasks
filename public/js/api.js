@@ -48,17 +48,18 @@ const api = (function () {
   //   });
   // };
 
-  // const destroy = (path) => {
-  //   return $.ajax({
-  //     type: 'DELETE',
-  //     url: path,
-  //     dataType: 'json',
-  //     headers: { 'Authorization': `Bearer ${store.authToken}` }
-  //   });
-  // };
+  const remove = (path) => {
+    return $.ajax({
+      type: 'DELETE',
+      url: path,
+      dataType: 'json',
+      headers: { 'Authorization': `Bearer ${store.authToken}` }
+    });
+  };
 
   return {
     create,
-    read
+    read,
+    remove
   };
 }());
