@@ -16,7 +16,7 @@
 
 // trying to follow along CRUD: Create, read, update, delete
 const api = (function () {
-  const create = (path, obj) => {
+  const post = (path, obj) => {
     return $.ajax({
       type: 'POST',
       url: path,
@@ -58,7 +58,7 @@ const api = (function () {
   };
 
   return {
-    create,
+    post,
     read,
     remove
   };

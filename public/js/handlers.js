@@ -15,7 +15,7 @@ const handlers = (function () {
       username: signupElement.find('.username-entry').val(),
       password: signupElement.find('.password-entry').val()
     };
-    api.create('/users', signupUser)
+    api.post('/users', signupUser)
       .then((res) => {
         signupElement[0].reset();
         console.log('signup success');
@@ -34,14 +34,14 @@ const handlers = (function () {
       password: loginElement.find('.password-entry').val()
     };
     // rename create later possibly post
-    api.create('/auth/login', loginUser)
+    api.post('/auth/login', loginUser)
       .then((res) => {
         store.authToken = res.authToken;
         return api.read('/tasks');
       })
       .then((tasks) => {
         store.addAllTasks(tasks);
-        store.screen = 'create-task';
+        store.screen = 'tasks';
         render();
       })
       .catch((err) => {
@@ -50,7 +50,7 @@ const handlers = (function () {
   }
 
   // create Task Handler
-  function handleCreateTaskPressed (e) {
+  function handlePostTaskPressed (e) {
     e.preventDefault();
 
     console.log('task create attempt!');
@@ -63,7 +63,7 @@ const handlers = (function () {
       category: taskElement.find('.category-entry').val()
     };
     // Create a task
-    api.create('/tasks', taskInput)
+    api.post('/tasks', taskInput)
       .then((res) => {
         console.log('inside task create', res);
         store.addToTasks(res);
@@ -74,15 +74,20 @@ const handlers = (function () {
   }
 
   function handleLogoPressed (e) {
-    e.preventDefault();
+    // e.preventDefault();
     store.screen = 'login';
+    render();
+  }
+
+  function handleAddTasksPressed (e) {
+    store.screen = 'create-task';
     render();
   }
 
   function handleTaskDeletePressed (e) {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
-    
+
     api.remove(`/tasks/${taskId}`)
       .then(() => {
         console.log("inside delete pressed");
@@ -95,7 +100,8 @@ const handlers = (function () {
     handleLogoPressed,
     handleSignupPressed,
     handleLoginPressed,
-    handleCreateTaskPressed,
-    handleTaskDeletePressed
+    handlePostTaskPressed,
+    handleTaskDeletePressed,
+    handleAddTasksPressed
   };
 }());

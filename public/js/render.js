@@ -45,19 +45,6 @@ const createForm = (form) => {
   `;
 };
 
-// will fill out eventually
-function tasksScreen () {
-  const taskList = store.tasks.map((task) => `
-    <div class="task" data-id="${task._id}">
-      <h2>${task.category}</h2>
-      <h3>${task.title}</h3>
-      <p>${task._id}</p>
-      <input class="task-delete" type="button" value="-">
-    </div>
-    `);
-  return taskList.join('');
-}
-
 function loginSigninScreen () {
   return `
     <h2>Site introduction</h2>
@@ -78,6 +65,23 @@ function createTaskScreen () {
       ${createForm(createtaskForm)}
     </section>
   `;
+}
+
+function tasksScreen () {
+  const taskList = store.tasks.map((task) => `
+    <div class="task" data-id="${task._id}">
+      <h2>${task.category}</h2>
+      <h3>${task.title}</h3>
+      <p>${task._id}</p>
+      <input class="task-delete" type="button" value="-">
+    </div>
+    `);
+  const taskPage = `
+    <h2>Task Page</h2>
+    <input class="task-add" type="button" value="Add Task">
+    ${taskList.join('')}
+  `;
+  return taskPage;
 }
 
 const render = () => {

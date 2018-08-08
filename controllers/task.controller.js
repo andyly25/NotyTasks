@@ -49,7 +49,6 @@ exports.getTaskId = (req, res) => {
 // Using POST
 exports.postTask = (req, res) => {
   console.log("some user from POST", req.user);
-  // we use req.user.id and store into req.user.tasks?
   Task
     .create(req.body)
     .then((task) => {
