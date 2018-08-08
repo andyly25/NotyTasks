@@ -5,8 +5,9 @@ const User = require('../models/user.model');
 // Using GET
 exports.getTasks = (req, res) => {
   console.log('INSIDE GET TASKS');
+  console.log(req.user);
   Task
-    // get the user
+    // get the user's tasks, not all of the tasks
     .find()
     .then((tasks) => {
       res.json(tasks.map((task) => {
@@ -15,6 +16,7 @@ exports.getTasks = (req, res) => {
           id: task._id,
           title: task.title,
           image: task.image,
+          content: task.content,
           time: task.time,
           category: task.category
         };

@@ -40,6 +40,7 @@ const handlers = (function () {
         return api.read('/tasks');
       })
       .then((tasks) => {
+        store.loggedIn = !store.loggedIn;
         store.addAllTasks(tasks);
         store.screen = 'tasks';
         render();
@@ -74,8 +75,7 @@ const handlers = (function () {
   }
 
   function handleLogoPressed (e) {
-    // e.preventDefault();
-    store.screen = 'login';
+    store.screen = store.loggedIn ? 'tasks' : 'login';
     render();
   }
 

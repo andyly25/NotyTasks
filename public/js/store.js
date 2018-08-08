@@ -15,6 +15,7 @@ const store = (function () {
 
   return {
     authToken: '',
+    loggedIn: false,
     tasks: [],
     addToTasks,
     addAllTasks,

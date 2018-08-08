@@ -60,7 +60,6 @@ function createTaskScreen () {
   console.log('task screen yay!');
   return `
     <h2>Task Screen</h2>
-    <p>some Image</p>
     <section class="task-screen">
       ${createForm(createtaskForm)}
     </section>
