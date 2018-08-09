@@ -45,6 +45,37 @@ const createForm = (form) => {
   `;
 };
 
+const createEditForm = (form) => {
+  return `
+    <form class="createtask-edit-css createtask-edit-form">
+      <fieldset>
+        <legend>${form.legend}</legend>
+          <ul class="flex-outer">
+          ${form.inputs.map((input) => {
+            const inputLabel = input.labelFor;
+            return `
+              <li>
+                <label for="${input.labelFor}">${input.label}</label>
+                <input 
+                  type="${input.type}" 
+                  name="${input.name}" 
+                  class="${input.class}" 
+                  placeholder="${input.placeholder}"
+                  value="${input.value ? store.toEditTask[0][inputLabel] : ''}"
+                  >
+              </li>
+            `;
+            // .join('') removed the random commas between list elements
+            }).join('')} 
+            <li>
+              <button type="submit">Submit</button>
+            </li>
+          </ul>
+        </fieldset>
+    </form>
+  `;
+};
+
 function loginSigninScreen () {
   return `
     <h2>Site introduction</h2>
@@ -68,10 +99,11 @@ function createTaskScreen () {
 
 function editTaskScreen () {
   console.log('task screen yay!');
+  console.log('tedit task screen title', store.toEditTask[0].title);
   return `
     <h2>Edit Task Screen</h2>
     <section class="edit-task-screen">
-      ${createForm(createtaskForm)}
+      ${createEditForm(createtaskForm)}
     </section>
   `;
 }

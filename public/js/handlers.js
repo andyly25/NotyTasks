@@ -88,12 +88,25 @@ const handlers = (function () {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
     console.log('edit task pressed');
-    // api.put(`/tasks/:${taskId}`)
-    //   .then(() => {
-    //     console.log('inside edit task pressed');
-    //   });
+    store.taskId = taskId;
     store.editTaskContent(taskId);
+    console.log('toEditTask title', store.toEditTask[0].title);
     store.screen = 'edit-task';
+    render();
+  }
+
+  function handleEditSubmitPressed (e) {
+    e.preventDefault();
+
+    console.log('task edit attempt!');
+    const taskElement = $(e.currentTarget);
+
+    api.put(`/tasks/:${store.taskId}`)
+      .then(() => {
+        console.log('inside editsubmit task pressed');
+      });
+
+    store.screen = 'tasks';
     render();
   }
 
@@ -106,7 +119,7 @@ const handlers = (function () {
         console.log('inside delete pressed');
         store.findAndRemove(taskId);
         render();
-      })
+      });
   }
 
   return {
@@ -116,6 +129,7 @@ const handlers = (function () {
     handlePostTaskPressed,
     handleTaskDeletePressed,
     handleAddTaskPressed,
-    handleEditTaskPressed
+    handleEditTaskPressed,
+    handleEditSubmitPressed
   };
 }());

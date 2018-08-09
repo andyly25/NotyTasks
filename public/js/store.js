@@ -1,3 +1,11 @@
+// const emptyTaskObj = [{
+//   title: '',
+//   image: '',
+//   content: '',
+//   time: '',
+//   category: ''
+// }];
+
 // Store file to grab variables and data needed
 const store = (function () {
 
@@ -15,14 +23,15 @@ const store = (function () {
 
   function editTaskContent (id) {
     this.toEditTask = this.tasks.filter(task => task._id === id);
-    console.log('this.tasks', this.tasks);
+    console.log('this.toEditTask', this.toEditTask);
   }
 
   return {
     authToken: '',
     loggedIn: false,
     tasks: [],
-    toEditTask: {},
+    taskId: '',
+    toEditTask: [],
     addToTasks,
     addAllTasks,
     findAndRemove,

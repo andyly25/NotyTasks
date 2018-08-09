@@ -84,7 +84,8 @@ const createtaskForm = {
       type: 'text',
       name: 'image',
       class: 'image-entry',
-      placeholder: 'Optional, enter image URL'
+      placeholder: 'Optional, enter image URL',
+      value: '1.png'
     },
     {
       labelFor: 'content',
@@ -110,7 +111,8 @@ const createtaskForm = {
       type: 'time',
       name: 'time',
       class: 'time-entry',
-      placeholder: ''
+      placeholder: '',
+      value: ''
     },
     {
       labelFor: 'category',
@@ -118,7 +120,8 @@ const createtaskForm = {
       type: 'text',
       name: 'category',
       class: 'category-entry',
-      placeholder: ''
+      placeholder: '',
+      value: 't'
     }
   ]
 };
