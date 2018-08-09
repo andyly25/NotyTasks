@@ -6,6 +6,8 @@ const User = require('../models/user.model');
 exports.getTasks = (req, res) => {
   console.log('INSIDE GET TASKS');
   console.log(req.user);
+  const userId = req.user.id;
+  console.log({ userId });
   Task
     // get the user's tasks, not all of the tasks
     .find()
@@ -86,10 +88,39 @@ exports.deleteTask = (req, res) => {
 
 // Using PUT
 exports.putTask = (req, res) => {
+  // check if request path id and body id matches first
+  const taskId = req.params.id;
+
+  if (!(taskId && req.body.id && taskId === req.body.id)) {
+    res.status(400).json({
+      error: 'Request path id and req body id values must match'
+    });
+  }
+
+  const updated = {};
+  // title, image, content, time, category
+  const updateableFields = ['title', 'image', 'content', 'time', 'category'];
+  updateableFields.forEach((field) => {
+    if (field in req.body) {
+      updated[field] = req.body[field];
+    }
+  });
+
   Task
-    .findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .findByIdAndUpdate(taskId, { $set: updated }, { new: true })
     .then((task) => {
-      res.json(task);
+      res.status(200).json({
+        id: task._id,
+        title: task.title,
+        image: task.image,
+        content: task.content,
+        time: task.time,
+        category: task.category
+      });
       console.log(`Updated task item \`${req.params.id}\``);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: 'Something went wrong in PUT /tasks/:id' });
     });
 };

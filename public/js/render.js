@@ -66,13 +66,24 @@ function createTaskScreen () {
   `;
 }
 
+function editTaskScreen () {
+  console.log('task screen yay!');
+  return `
+    <h2>Edit Task Screen</h2>
+    <section class="edit-task-screen">
+      ${createForm(createtaskForm)}
+    </section>
+  `;
+}
+
 function tasksScreen () {
   const taskList = store.tasks.map((task) => `
     <div class="task" data-id="${task._id}">
       <h2>${task.category}</h2>
       <h3>${task.title}</h3>
       <p>${task._id}</p>
-      <input class="task-delete" type="button" value="-">
+      <input class="task-delete" type="button" value="delete">
+      <input class="task-edit" type="button" value="edit">
     </div>
     `);
   const taskPage = `
@@ -93,6 +104,9 @@ const render = () => {
       break;
     case 'create-task':
       $('.container').html(createTaskScreen());
+      break;
+    case 'edit-task':
+      $('.container').html(editTaskScreen());
       break;
     default:
       console.log('ERROR');

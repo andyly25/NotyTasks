@@ -37,16 +37,16 @@ const api = (function () {
     });
   };
 
-  // const update = (path, obj) => {
-  //   return $.ajax({
-  //     type: 'PUT',
-  //     url: path,
-  //     contentType: 'application/json',
-  //     dataType: 'json',
-  //     data: JSON.stringify(obj),
-  //     headers: { 'Authorization': `Bearer ${store.authToken}` }
-  //   });
-  // };
+  const put = (path, obj) => {
+    return $.ajax({
+      type: 'PUT',
+      url: path,
+      contentType: 'application/json',
+      dataType: 'json',
+      data: JSON.stringify(obj),
+      headers: { 'Authorization': `Bearer ${store.authToken}` }
+    });
+  };
 
   const remove = (path) => {
     return $.ajax({
@@ -60,6 +60,7 @@ const api = (function () {
   return {
     post,
     read,
-    remove
+    remove,
+    put
   };
 }());

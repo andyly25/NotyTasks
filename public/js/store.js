@@ -10,16 +10,23 @@ const store = (function () {
   }
 
   function findAndRemove (id) {
-    this.tasks = this.tasks.filter(task => task._id != id);
+    this.tasks = this.tasks.filter(task => task._id !== id);
+  }
+
+  function editTaskContent (id) {
+    this.toEditTask = this.tasks.filter(task => task._id === id);
+    console.log('this.tasks', this.tasks);
   }
 
   return {
     authToken: '',
     loggedIn: false,
     tasks: [],
+    toEditTask: {},
     addToTasks,
     addAllTasks,
     findAndRemove,
+    editTaskContent,
     screen: 'login'
   };
 }());

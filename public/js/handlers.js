@@ -79,8 +79,21 @@ const handlers = (function () {
     render();
   }
 
-  function handleAddTasksPressed (e) {
+  function handleAddTaskPressed (e) {
     store.screen = 'create-task';
+    render();
+  }
+
+  function handleEditTaskPressed (e) {
+    const taskElement = $(e.currentTarget);
+    const taskId = taskElement.closest('.task').data('id');
+    console.log('edit task pressed');
+    // api.put(`/tasks/:${taskId}`)
+    //   .then(() => {
+    //     console.log('inside edit task pressed');
+    //   });
+    store.editTaskContent(taskId);
+    store.screen = 'edit-task';
     render();
   }
 
@@ -90,7 +103,7 @@ const handlers = (function () {
 
     api.remove(`/tasks/${taskId}`)
       .then(() => {
-        console.log("inside delete pressed");
+        console.log('inside delete pressed');
         store.findAndRemove(taskId);
         render();
       })
@@ -102,6 +115,7 @@ const handlers = (function () {
     handleLoginPressed,
     handlePostTaskPressed,
     handleTaskDeletePressed,
-    handleAddTasksPressed
+    handleAddTaskPressed,
+    handleEditTaskPressed
   };
 }());
