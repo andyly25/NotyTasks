@@ -25,4 +25,15 @@ const TaskSchema = new mongoose.Schema({
   }
 });
 
+TaskSchema.methods.serialize = function () {
+  return {
+    title: this.title,
+    image: this.image,
+    content: this.content,
+    time: this.time,
+    category: this.category,
+    id: this._id
+  };
+};
+
 module.exports = mongoose.model('Task', TaskSchema);

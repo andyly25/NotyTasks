@@ -3,6 +3,19 @@
 
 // Where our handlers are located
 const handlers = (function () {
+
+  // #### Helper functions ####
+  const getFormInfo = (form) => {
+    return {
+      title: form.find('.title-entry').val(),
+      image: form.find('.image-entry').val(),
+      content: form.find('.content-entry').val(),
+      time: form.find('.date-entry').val(),
+      category: form.find('.category-entry').val()
+    };
+  };
+
+  // #### Handler functions ####
   // signin handler
   function handleSignupPressed (e) {
     e.preventDefault();
@@ -56,13 +69,7 @@ const handlers = (function () {
 
     console.log('task create attempt!');
     const taskElement = $(e.currentTarget);
-    const taskInput = {
-      title: taskElement.find('.title-entry').val(),
-      image: taskElement.find('.image-entry').val(),
-      content: taskElement.find('.content-entry').val(),
-      time: taskElement.find('.date-entry').val(),
-      category: taskElement.find('.category-entry').val()
-    };
+    const taskInput = getFormInfo(taskElement);
     // Create a task
     api.post('/tasks', taskInput)
       .then((res) => {
@@ -90,24 +97,20 @@ const handlers = (function () {
     console.log('edit task pressed');
     store.taskId = taskId;
     store.editTaskContent(taskId);
-    console.log('toEditTask title', store.toEditTask[0].title);
     store.screen = 'edit-task';
     render();
   }
 
   function handleEditSubmitPressed (e) {
     e.preventDefault();
-
-    console.log('task edit attempt!');
     const taskElement = $(e.currentTarget);
-
-    api.put(`/tasks/:${store.taskId}`)
-      .then(() => {
-        console.log('inside editsubmit task pressed');
+    const taskInput = getFormInfo(taskElement);
+    api.put(`/tasks/${store.taskId}`, taskInput)
+      .then((task) => {
+        store.updateTask(task);
+        store.screen = 'tasks';
+        render();
       });
-
-    store.screen = 'tasks';
-    render();
   }
 
   function handleTaskDeletePressed (e) {

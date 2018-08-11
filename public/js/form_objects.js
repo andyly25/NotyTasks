@@ -103,7 +103,8 @@ const createtaskForm = {
     //   type: 'date',
     //   name: 'task-date',
     //   class: 'date-entry',
-    //   placeholder: ''
+    //   placeholder: '',
+    //   value: moment().format('YYYY-MM-D')
     // },
     {
       labelFor: 'time',
@@ -112,7 +113,7 @@ const createtaskForm = {
       name: 'time',
       class: 'time-entry',
       placeholder: '',
-      value: ''
+      value: moment().format('HH:mm')
     },
     {
       labelFor: 'category',

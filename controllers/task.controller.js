@@ -4,25 +4,13 @@ const User = require('../models/user.model');
 
 // Using GET
 exports.getTasks = (req, res) => {
-  console.log('INSIDE GET TASKS');
-  console.log(req.user);
   const userId = req.user.id;
-  console.log({ userId });
-  Task
-    // get the user's tasks, not all of the tasks
-    .find()
-    .then((tasks) => {
-      res.json(tasks.map((task) => {
-        // id, title, image, content, time, category
-        return {
-          id: task._id,
-          title: task.title,
-          image: task.image,
-          content: task.content,
-          time: task.time,
-          category: task.category
-        };
-      }));
+
+  User
+    .findById(userId)
+    .then((user) => {
+      console.log('user', user);
+      res.json(user.tasks.map(task => task.serialize()));
       console.log('successfully grabbed tasks');
     })
     .catch((err) => {
@@ -35,14 +23,7 @@ exports.getTaskId = (req, res) => {
   Task
     .findById(req.params.id)
     .then((task) => {
-      res.json({
-        // id, title, image, content, time, category
-        id: task._id,
-        title: task.title,
-        image: task.image,
-        time: task.time,
-        category: task.category
-      });
+      res.json(task.serialize());
     })
     .catch((err) => {
       console.log(err);
@@ -59,7 +40,7 @@ exports.postTask = (req, res) => {
       User
         .findByIdAndUpdate(req.user.id, { $push: { tasks: task._id } })
         .then(() => {
-          res.json(task);
+          res.json(task.serialize());
         });
     })
     .catch((err) => {
@@ -90,8 +71,7 @@ exports.deleteTask = (req, res) => {
 exports.putTask = (req, res) => {
   // check if request path id and body id matches first
   const taskId = req.params.id;
-
-  if (!(taskId && req.body.id && taskId === req.body.id)) {
+  if (!(taskId)) {
     res.status(400).json({
       error: 'Request path id and req body id values must match'
     });
@@ -109,15 +89,7 @@ exports.putTask = (req, res) => {
   Task
     .findByIdAndUpdate(taskId, { $set: updated }, { new: true })
     .then((task) => {
-      res.status(200).json({
-        id: task._id,
-        title: task.title,
-        image: task.image,
-        content: task.content,
-        time: task.time,
-        category: task.category
-      });
-      console.log(`Updated task item \`${req.params.id}\``);
+      res.status(200).json(task.serialize());
     })
     .catch((err) => {
       console.log(err);

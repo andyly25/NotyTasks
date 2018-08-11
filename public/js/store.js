@@ -18,12 +18,21 @@ const store = (function () {
   }
 
   function findAndRemove (id) {
-    this.tasks = this.tasks.filter(task => task._id !== id);
+    this.tasks = this.tasks.filter(task => task.id !== id);
   }
 
   function editTaskContent (id) {
-    this.toEditTask = this.tasks.filter(task => task._id === id);
+    this.toEditTask = this.tasks.filter(task => task.id === id);
     console.log('this.toEditTask', this.toEditTask);
+  }
+
+  function updateTask (updatedTask) {
+    this.tasks = this.tasks.map(task => {
+      if (updatedTask.id === task.id) {
+        return updatedTask;
+      }
+      return task;
+    })
   }
 
   return {
@@ -36,6 +45,7 @@ const store = (function () {
     addAllTasks,
     findAndRemove,
     editTaskContent,
+    updateTask,
     screen: 'login'
   };
 }());

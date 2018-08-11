@@ -1,20 +1,3 @@
-// Similar to how our page would render
-const sampleDisplay = [...Array(4)].map((_, i) => {
-  return `  
-    <h2>Some Category</h2>  
-    <ul class="card"> 
-      <li class="card--content"><a href="#">Hello</a> something</li>  
-      <li class="card--content"><a href="#">Hello</a> was</li>  
-      <li class="card--content"><a href="#">Hello</a> here</li> 
-      <li class="card--content"><a href="#">Hello</a> test</li> 
-      <li class="card--content"><a href="#">Hello</a> text</li> 
-      <li class="card--content"><a href="#">Hello</a> k</li>  
-      <li class="card--content"><a href="#">Hello</a> apple</li>  
-      <li class="card--content"><a href="#">Hello</a> sauce</li>  
-    </ul> 
-  `;
-});
-
 const createForm = (form) => {
   return `
     <form class="${form.classes}">
@@ -88,7 +71,6 @@ function loginSigninScreen () {
 }
 
 function createTaskScreen () {
-  console.log('task screen yay!');
   return `
     <h2>Task Screen</h2>
     <section class="task-screen">
@@ -98,8 +80,6 @@ function createTaskScreen () {
 }
 
 function editTaskScreen () {
-  console.log('task screen yay!');
-  console.log('tedit task screen title', store.toEditTask[0].title);
   return `
     <h2>Edit Task Screen</h2>
     <section class="edit-task-screen">
@@ -109,11 +89,12 @@ function editTaskScreen () {
 }
 
 function tasksScreen () {
+  console.log('tasks', store.tasks);
   const taskList = store.tasks.map((task) => `
-    <div class="task" data-id="${task._id}">
+    <div class="task" data-id="${task.id}">
       <h2>${task.category}</h2>
       <h3>${task.title}</h3>
-      <p>${task._id}</p>
+      <p>${task.id}</p>
       <input class="task-delete" type="button" value="delete">
       <input class="task-edit" type="button" value="edit">
     </div>
