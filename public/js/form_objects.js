@@ -98,13 +98,13 @@ const createtaskForm = {
     },
     // datetime-local has limited support, best use date and time separately
     {
-      labelFor: 'task-date',
+      labelFor: 'date',
       label: 'Date:',
       type: 'date',
-      name: 'task-date',
+      name: 'date',
       class: 'date-entry',
       placeholder: '',
-      value: moment().format('YYYY-MM-DD')
+      value: moment().add(1, 'day').format('YYYY-MM-DD')
     },
     {
       labelFor: 'time',

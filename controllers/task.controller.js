@@ -79,7 +79,7 @@ exports.putTask = (req, res) => {
 
   const updated = {};
   // title, image, content, time, category
-  const updateableFields = ['title', 'image', 'content', 'time', 'category'];
+  const updateableFields = ['title', 'image', 'content', 'date', 'time', 'category'];
   updateableFields.forEach((field) => {
     if (field in req.body) {
       updated[field] = req.body[field];

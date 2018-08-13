@@ -23,7 +23,8 @@ const store = (function () {
 
   function editTaskContent (id) {
     this.toEditTask = this.tasks.filter(task => task.id === id);
-    console.log('this.toEditTask', this.toEditTask);
+    this.toEditTask[0].date = moment(this.toEditTask[0].date).format('YYYY-MM-DD');
+    this.toEditTask[0].time = moment(this.toEditTask[0].time, 'HH:mm').format('HH:mm');
   }
 
   function updateTask (updatedTask) {

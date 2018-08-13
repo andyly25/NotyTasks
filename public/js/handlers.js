@@ -10,7 +10,8 @@ const handlers = (function () {
       title: form.find('.title-entry').val(),
       image: form.find('.image-entry').val(),
       content: form.find('.content-entry').val(),
-      time: form.find('.date-entry').val(),
+      date: form.find('.date-entry').val(),
+      time: form.find('.time-entry').val(),
       category: form.find('.category-entry').val()
     };
   };

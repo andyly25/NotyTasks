@@ -14,10 +14,11 @@ const TaskSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  date: {
+    type: String
+  },
   time: {
-    // Not sure
-    type: Date,
-    default: Date.now
+    type: String
   },
   category: {
     type: String,
@@ -30,6 +31,7 @@ TaskSchema.methods.serialize = function () {
     title: this.title,
     image: this.image,
     content: this.content,
+    date: this.date,
     time: this.time,
     category: this.category,
     id: this._id
