@@ -1,3 +1,19 @@
+// const res = [...Array(4)].map((_, i) => {
+//   return `
+//     <h2>Some Category</h2>
+//     <ul class="card">
+//       <li class="card--content"><a href="#">Hello</a> something</li>
+//       <li class="card--content"><a href="#">Hello</a> was</li>
+//       <li class="card--content"><a href="#">Hello</a> here</li>
+//       <li class="card--content"><a href="#">Hello</a> test</li>
+//       <li class="card--content"><a href="#">Hello</a> text</li>
+//       <li class="card--content"><a href="#">Hello</a> k</li>
+//       <li class="card--content"><a href="#">Hello</a> apple</li>
+//       <li class="card--content"><a href="#">Hello</a> sauce</li>
+//     </ul>
+//   `;
+// });
+
 const createForm = (form) => {
   return `
     <form class="${form.classes}">
@@ -90,6 +106,14 @@ function editTaskScreen () {
 function tasksScreen () {
   console.log('tasks', store.tasks);
   console.log('GROUPED TASKS', store.categorizeTasks());
+  const categorizedTasks = store.categorizeTasks();
+  const taskList2 = _.map(categorizedTasks, (arrayTasks) => {
+    console.log('arrayTasks', arrayTasks);
+    arrayTasks.map((task) => {
+      console.log('task', task);
+    });
+  });
+
   const taskList = store.tasks.map((task) => `
     <div class="task" data-id="${task.id}">
       <h2>${task.category}</h2>
