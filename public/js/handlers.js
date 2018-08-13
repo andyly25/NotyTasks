@@ -54,7 +54,7 @@ const handlers = (function () {
         return api.read('/tasks');
       })
       .then((tasks) => {
-        store.loggedIn = !store.loggedIn;
+        store.isLogged();
         store.addAllTasks(tasks);
         store.screen = 'tasks';
         render();
@@ -67,7 +67,7 @@ const handlers = (function () {
   // logout handler
   function handleLogoutPressed (e) {
     e.preventDefault();
-    store.loggedIn = !store.loggedIn;
+    store.isLogged();
     window.location.href = '/auth/logout';
   }
 

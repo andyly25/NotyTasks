@@ -89,6 +89,7 @@ function editTaskScreen () {
 
 function tasksScreen () {
   console.log('tasks', store.tasks);
+  console.log('GROUPED TASKS', store.categorizeTasks());
   const taskList = store.tasks.map((task) => `
     <div class="task" data-id="${task.id}">
       <h2>${task.category}</h2>

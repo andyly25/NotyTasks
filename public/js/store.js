@@ -2,6 +2,7 @@
 //   title: '',
 //   image: '',
 //   content: '',
+//   date: '',
 //   time: '',
 //   category: ''
 // }];
@@ -33,12 +34,21 @@ const store = (function () {
         return updatedTask;
       }
       return task;
-    })
+    });
+  }
+
+  function categorizeTasks () {
+    return _.groupBy(this.tasks, 'category');
+  }
+
+  function isLogged () {
+    this.loggedIn = !this.loggedIn;
   }
 
   return {
     authToken: '',
     loggedIn: false,
+    isLogged,
     tasks: [],
     taskId: '',
     toEditTask: [],
@@ -47,6 +57,7 @@ const store = (function () {
     findAndRemove,
     editTaskContent,
     updateTask,
+    categorizeTasks,
     screen: 'login'
   };
 }());
