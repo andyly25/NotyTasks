@@ -10,4 +10,5 @@ const callEventListeners = () => {
   $('#main-content').on('click', '.task-add', handlers.handleAddTaskPressed);
   $('#main-content').on('click', '.task-delete', handlers.handleTaskDeletePressed);
   $('#main-content').on('click', '.task-edit', handlers.handleEditTaskPressed);
+  $('#main-content').on('click', '.user-logout', handlers.handleLogoutPressed);
 };

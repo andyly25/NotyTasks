@@ -64,6 +64,13 @@ const handlers = (function () {
       });
   }
 
+  // logout handler
+  function handleLogoutPressed (e) {
+    e.preventDefault();
+    store.loggedIn = !store.loggedIn;
+    window.location.href = '/auth/logout';
+  }
+
   // create Task Handler
   function handlePostTaskPressed (e) {
     e.preventDefault();
@@ -130,6 +137,7 @@ const handlers = (function () {
     handleLogoPressed,
     handleSignupPressed,
     handleLoginPressed,
+    handleLogoutPressed,
     handlePostTaskPressed,
     handleTaskDeletePressed,
     handleAddTaskPressed,

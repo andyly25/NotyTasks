@@ -62,7 +62,6 @@ const createEditForm = (form) => {
 function loginSigninScreen () {
   return `
     <h2>Site introduction</h2>
-    <p>some Image</p>
     <section class="login-signin">
       ${createForm(loginForm)}
       ${createForm(signupForm)}
@@ -95,13 +94,14 @@ function tasksScreen () {
       <h2>${task.category}</h2>
       <h3>${task.title}</h3>
       <p>${task.id}</p>
-      <input class="task-delete" type="button" value="delete">
-      <input class="task-edit" type="button" value="edit">
+      <input class="task-delete task-button" type="button" value="delete">
+      <input class="task-edit task-button" type="button" value="edit">
     </div>
     `);
   const taskPage = `
     <h2>Task Page</h2>
-    <input class="task-add" type="button" value="Add Task">
+    <input class="task-add task-button" type="button" value="Add Task">
+    <input class="user-logout task-button" type="button" value="Log Out">
     ${taskList.join('')}
   `;
   return taskPage;

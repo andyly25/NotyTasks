@@ -19,6 +19,11 @@ exports.postLogin = (req, res) => {
   res.json({ authToken });
 };
 
+exports.getLogout = (req, res) => {
+  req.logout();
+  res.redirect('/');
+};
+
 // user exchanges a valid JWT for a new one with later expiration
 exports.postRefresh = (req, res) => {
   const authToken = createAuthToken(req.user);

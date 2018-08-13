@@ -28,7 +28,7 @@ const store = (function () {
   }
 
   function updateTask (updatedTask) {
-    this.tasks = this.tasks.map(task => {
+    this.tasks = this.tasks.map((task) => {
       if (updatedTask.id === task.id) {
         return updatedTask;
       }
