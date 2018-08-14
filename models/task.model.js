@@ -23,6 +23,10 @@ const TaskSchema = new mongoose.Schema({
   category: {
     type: String,
     default: ''
+  },
+  completed: {
+    type: Boolean,
+    default: true
   }
 });
 
@@ -34,6 +38,7 @@ TaskSchema.methods.serialize = function () {
     date: this.date,
     time: this.time,
     category: this.category,
+    completed: this.completed,
     id: this._id
   };
 };

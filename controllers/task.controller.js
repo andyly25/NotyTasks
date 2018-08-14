@@ -9,7 +9,6 @@ exports.getTasks = (req, res) => {
   User
     .findById(userId)
     .then((user) => {
-      console.log('user', user);
       res.json(user.tasks.map(task => task.serialize()));
       console.log('successfully grabbed tasks');
     })
@@ -33,7 +32,6 @@ exports.getTaskId = (req, res) => {
 
 // Using POST
 exports.postTask = (req, res) => {
-  console.log("some user from POST", req.user);
   Task
     .create(req.body)
     .then((task) => {
@@ -79,7 +77,7 @@ exports.putTask = (req, res) => {
 
   const updated = {};
   // title, image, content, time, category
-  const updateableFields = ['title', 'image', 'content', 'date', 'time', 'category'];
+  const updateableFields = ['title', 'image', 'content', 'date', 'time', 'category', 'completed'];
   updateableFields.forEach((field) => {
     if (field in req.body) {
       updated[field] = req.body[field];

@@ -22,6 +22,10 @@ const store = (function () {
     this.tasks = this.tasks.filter(task => task.id !== id);
   }
 
+  function findById (id) {
+    return this.tasks.find(task => task.id === id);
+  }
+
   function editTaskContent (id) {
     this.toEditTask = this.tasks.filter(task => task.id === id);
     this.toEditTask[0].date = moment(this.toEditTask[0].date).format('YYYY-MM-DD');
@@ -38,7 +42,12 @@ const store = (function () {
   }
 
   function categorizeTasks () {
-    return _.groupBy(this.tasks, 'category');
+    let arr = this.tasks;
+    if (this.showCompleted) {
+      arr = arr.filter(task => task.completed);
+    }
+    // implement search similar to checkbox
+    return _.groupBy(arr, 'category');
   }
 
   function isLogged () {
@@ -47,6 +56,7 @@ const store = (function () {
 
   return {
     authToken: '',
+    showCompleted: false,
     loggedIn: false,
     isLogged,
     tasks: [],
@@ -56,6 +66,7 @@ const store = (function () {
     addAllTasks,
     findAndRemove,
     editTaskContent,
+    findById,
     updateTask,
     categorizeTasks,
     screen: 'login'

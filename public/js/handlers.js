@@ -121,6 +121,24 @@ const handlers = (function () {
       });
   }
 
+  function handleTaskCompleted (e) {
+    const taskId = $(e.currentTarget).closest('.task').data('id');
+    const task = store.findById(taskId);
+    task.completed = !task.completed;
+    console.log(task);
+    api.put(`/tasks/${task.id}`, task)
+      .then((task) => {
+        store.updateTask(task);
+        store.screen = 'tasks';
+        render();
+      });
+  }
+
+  function handleShowCompleted (e) {
+    store.showCompleted = !store.showCompleted;
+    render();
+  }
+
   function handleTaskDeletePressed (e) {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
@@ -142,6 +160,8 @@ const handlers = (function () {
     handleTaskDeletePressed,
     handleAddTaskPressed,
     handleEditTaskPressed,
+    handleTaskCompleted,
+    handleShowCompleted,
     handleEditSubmitPressed
   };
 }());
