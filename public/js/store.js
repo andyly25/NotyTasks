@@ -4,7 +4,8 @@
 //   content: '',
 //   date: '',
 //   time: '',
-//   category: ''
+//   category: '',
+//   completed: ''
 // }];
 
 // Store file to grab variables and data needed
@@ -46,6 +47,10 @@ const store = (function () {
     if (this.showCompleted) {
       arr = arr.filter(task => task.completed);
     }
+    if (this.searchInput !== '') {
+      arr = arr.filter(task => task.title === this.searchInput);
+      // this.searchInput = '';
+    }
     // implement search similar to checkbox
     return _.groupBy(arr, 'category');
   }
@@ -58,6 +63,7 @@ const store = (function () {
     authToken: '',
     showCompleted: false,
     loggedIn: false,
+    searchInput: '',
     isLogged,
     tasks: [],
     taskId: '',

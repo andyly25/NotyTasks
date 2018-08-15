@@ -122,13 +122,25 @@ function separateTasks (tasks) {
 
 function tasksScreen () {
   const categorizedTasks = store.categorizeTasks();
+  console.log('categorizedTasks', categorizedTasks);
+  if (Object.keys(categorizedTasks).length === 0) {
+    const searchInput = store.searchInput;
+    store.searchInput = '';
+    return `<h2>no search found for ${searchInput}</h2>`;
+  }
+  store.searchInput = '';
   const taskList = separateCategories(categorizedTasks);
-  
+
   const taskPage = `
     <h2>Task Page</h2>
     <input class="task-add task-button" type="button" value="Add Task">
     <input class="user-logout task-button" type="button" value="Log Out">
-    <input class="show-completed" type="checkbox">
+    <input class="show-completed" id="show-completed" type="checkbox">
+    <label for="show-completed">Show Completed</label>
+    <input class="task-search" type="search" name="q"
+      placeholder="Search for tasks..."
+      aria-label="Search through tasks"
+    >
     ${taskList.join('')}
   `;
   return taskPage;

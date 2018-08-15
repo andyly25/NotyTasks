@@ -134,8 +134,17 @@ const handlers = (function () {
       });
   }
 
-  function handleShowCompleted (e) {
+  function handleShowCompleted () {
     store.showCompleted = !store.showCompleted;
+    render();
+  }
+
+  function handleTaskSearch (e) {
+    e.preventDefault();
+    console.log('searching for tasks');
+    const taskElement = $(e.currentTarget);
+    store.searchInput = taskElement.val();
+    console.log('store.searchInput', taskElement.val());
     render();
   }
 
@@ -162,6 +171,7 @@ const handlers = (function () {
     handleEditTaskPressed,
     handleTaskCompleted,
     handleShowCompleted,
+    handleTaskSearch,
     handleEditSubmitPressed
   };
 }());
