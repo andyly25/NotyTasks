@@ -91,6 +91,7 @@ function editTaskScreen () {
 function separateCategories (obj) {
   return _.map(obj, (arrayTasks) => {
     return `
+      <h2>Category: ${arrayTasks[0].category}</h2>
       <ul class="card">
       ${separateTasks(arrayTasks).join('')}
       </ul>
@@ -103,9 +104,14 @@ function separateTasks (tasks) {
     return `
       <li class="card--content">
         <div class="task" data-id="${task.id}">
-          <h2>${task.category}</h2>
-          <h3>${task.title}</h3>
-          <p>${task.id}</p>
+          <h2>${task.title}</h2>
+          <img src=${task.image} height="200px" width="200px"
+            onerror="this.onerror=null;this.src='./missing.jpeg';"
+          >
+          <p>Due: 
+            ${moment(task.date).format('MM/DD/YYYY')}, 
+            ${moment(task.time, 'HH:mm').format('hh:mm A')}
+          </p>
           <input class="task-view task-button" type="button" value="view">
           <input class="task-edit task-button" type="button" value="edit">
           <input class="task-delete task-button" type="button" value="delete">
@@ -159,8 +165,11 @@ function singleTaskScreen () {
   return `
     <h2>Title: ${task.title}</h2>
     <h2>Category: ${task.category}</h2>
-    <h2>Image: ${task.image}</h2>
-    <h2>Date: Time: ${task.time}</h2>
+    <img src=${task.image} height="300px" width="300px"
+      onerror="this.onerror=null;this.src='./missing.jpeg';"
+    >
+    <h2>Date: ${task.date}</h2> 
+    <h2>Time: ${task.time}</h2>
   `;
 }
 

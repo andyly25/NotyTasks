@@ -85,7 +85,7 @@ const createtaskForm = {
       name: 'image',
       class: 'image-entry',
       placeholder: 'Optional, enter image URL',
-      value: '1.png'
+      value: 'https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg'
     },
     {
       labelFor: 'content',
