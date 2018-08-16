@@ -19,7 +19,7 @@ chai.use(chaiHttp);
 chai.use(chaiExclude);
 
 describe('Auth endpoints', function () {
-  const username = 'exampleUser';
+  const username = 'exampleUser@gmail.com';
   const password = 'examplePass';
   const firstName = 'Example';
   const lastName = 'User';

@@ -106,14 +106,17 @@ function separateTasks (tasks) {
           <h2>${task.category}</h2>
           <h3>${task.title}</h3>
           <p>${task.id}</p>
-          <input class="task-delete task-button" type="button" value="delete">
+          <input class="task-view task-button" type="button" value="view">
           <input class="task-edit task-button" type="button" value="edit">
-          <input 
-            class="task-completed"
-            type="checkbox" 
-            value="completed" 
-            ${task.completed ? 'checked' : ''}
-          >
+          <input class="task-delete task-button" type="button" value="delete">
+          <label>
+            <input 
+              class="task-completed"
+              type="checkbox" 
+              value="completed" 
+              ${task.completed ? 'checked' : ''}
+            > Completed
+          </label>
         </div>
       </li>
     `;
@@ -123,11 +126,7 @@ function separateTasks (tasks) {
 function tasksScreen () {
   const categorizedTasks = store.categorizeTasks();
   console.log('categorizedTasks', categorizedTasks);
-  // if (Object.keys(categorizedTasks).length === 0) {
-  //   const searchInput = store.searchInput;
-  //   store.searchInput = '';
-  //   return `<h2>no search found for ${searchInput}</h2>`;
-  // }
+
   const emptyTasks = () => {
     const searchInput = store.searchInput;
     store.searchInput = '';
@@ -136,9 +135,8 @@ function tasksScreen () {
     }
     return `<h2>no search found: ${searchInput}</h2>`;
   };
-  store.searchInput = '';
-  const taskList = separateCategories(categorizedTasks);
 
+  const taskList = separateCategories(categorizedTasks);
   const taskPage = `
     <h2>Task Page</h2>
     <input class="task-add task-button" type="button" value="Add Task">
@@ -156,6 +154,16 @@ function tasksScreen () {
   return taskPage;
 }
 
+function singleTaskScreen () {
+  const task = store.toEditTask[0];
+  return `
+    <h2>Title: ${task.title}</h2>
+    <h2>Category: ${task.category}</h2>
+    <h2>Image: ${task.image}</h2>
+    <h2>Date: Time: ${task.time}</h2>
+  `;
+}
+
 const render = () => {
   switch (store.screen) {
     case 'login':
@@ -166,6 +174,9 @@ const render = () => {
       break;
     case 'create-task':
       $('.container').html(createTaskScreen());
+      break;
+    case 'view-task':
+      $('.container').html(singleTaskScreen());
       break;
     case 'edit-task':
       $('.container').html(editTaskScreen());

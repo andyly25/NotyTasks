@@ -121,6 +121,16 @@ const handlers = (function () {
       });
   }
 
+  function handleViewTaskPressed (e) {
+    const taskElement = $(e.currentTarget);
+    const taskId = taskElement.closest('.task').data('id');
+    console.log('view task pressed');
+    store.taskId = taskId;
+    store.editTaskContent(taskId);
+    store.screen = 'view-task';
+    render();
+  }
+
   function handleTaskCompleted (e) {
     const taskId = $(e.currentTarget).closest('.task').data('id');
     const task = store.findById(taskId);
@@ -168,6 +178,7 @@ const handlers = (function () {
     handlePostTaskPressed,
     handleTaskDeletePressed,
     handleAddTaskPressed,
+    handleViewTaskPressed,
     handleEditTaskPressed,
     handleTaskCompleted,
     handleShowCompleted,
