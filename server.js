@@ -16,6 +16,8 @@ const app = express();
 const taskRouter = require('./routes/tasks.router');
 const userRouter = require('./routes/users.router');
 const authRouter = require('./routes/auths.router');
+// testing mailing
+const mailRouter = require('./routes/mails.router');
 
 const { localStrategy, jwtStrategy } = require('./strategies');
 
@@ -42,6 +44,8 @@ app.use(bodyParser.json());
 app.use('/tasks', taskRouter);
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
+// testing mailing
+app.use('/send', mailRouter);
 
 // both runServer and closeServer need to access the same
 // server object, so we declare `server` here, and then when

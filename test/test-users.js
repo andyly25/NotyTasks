@@ -17,7 +17,7 @@ chai.use(chaiHttp);
 chai.use(chaiExclude);
 
 describe('/user', function () {
-  const username = 'exampleUser';
+  const username = 'exampleuser@gmail.com';
   const password = 'examplePass';
   const firstName = 'Example';
   const lastName = 'User';
