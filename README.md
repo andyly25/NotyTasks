@@ -8,17 +8,14 @@ Is it No thank you Tasks?
 In the end the thing that it has in common is that you edit and manage tasks.
 
 ## Current Goals:
-- Implement Date and Time correctly
-- add in a Sign Out
-- Separate Tasks into categories organized by most recent tasks due
+- ~~Implement Date and Time correctly~~
+- ~~add in a Sign Out~~
+- ~~Separate Tasks into categories organized by most recent tasks due~~
+- ~~Search tasks feature~~
+- Make it so username is in e-mail format
+- figure out how to send an e-mail with tasks
+- notifications to notify completion
+- refactor the code
 - Prettify with CSS and things
-- Then add extra features like e-mail
-  - or using info to make a calender event
 
-
-### Other ideas
-- Users on add/edit can create their own categories
-- a way to notify completion/due date of tasks
-- create a popup of some kind to make add task quickly
-- a starter template for task
 

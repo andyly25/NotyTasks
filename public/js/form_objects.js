@@ -9,7 +9,7 @@ const loginForm = {
       name: 'username',
       class: 'username-entry',
       placeholder: 'Username here',
-      value: 'someuser'
+      value: 'someuser1@gmail.com'
     },
     {
       labelFor: 'password',
@@ -46,10 +46,10 @@ const signupForm = {
     {
       labelFor: 'username',
       label: 'Username:',
-      type: 'text',
+      type: 'email',
       name: 'username',
       class: 'username-entry',
-      placeholder: 'Username here'
+      placeholder: 'Username in e-mail format: xxx@xxx.xxx'
     },
     {
       labelFor: 'password',
