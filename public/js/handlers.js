@@ -16,39 +16,8 @@ const handlers = (function () {
     };
   };
 
-  // #### Handler functions ####
-  // signin handler
-  function handleSignupPressed (e) {
-    e.preventDefault();
-
-    console.log('sign up attempt!');
-    const signupElement = $(e.currentTarget);
-    const signupUser = {
-      firstName: signupElement.find('.firstName-entry').val(),
-      lastName: signupElement.find('.lastName-entry').val(),
-      username: signupElement.find('.username-entry').val(),
-      password: signupElement.find('.password-entry').val()
-    };
-    api.post('/users', signupUser)
-      .then((res) => {
-        signupElement[0].reset();
-        console.log('signup success');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  // login handler
-  function handleLoginPressed (e) {
-    e.preventDefault();
-    const loginElement = $(e.currentTarget);
-    const loginUser = {
-      username: loginElement.find('.username-entry').val(),
-      password: loginElement.find('.password-entry').val()
-    };
-    // rename create later possibly post
-    api.post('/auth/login', loginUser)
+  const loginUser = (loginInfo) => {
+    api.post('/auth/login', loginInfo)
       .then((res) => {
         store.authToken = res.authToken;
         return api.read('/tasks');
@@ -62,6 +31,44 @@ const handlers = (function () {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  // #### Handler functions ####
+  // signin handler
+  function handleSignupPressed (e) {
+    e.preventDefault();
+
+    console.log('sign up attempt!');
+    const signupElement = $(e.currentTarget);
+    const username = signupElement.find('.username-entry').val();
+    const password = signupElement.find('.password-entry').val();
+    const signupUser = {
+      firstName: signupElement.find('.firstName-entry').val(),
+      lastName: signupElement.find('.lastName-entry').val(),
+      username,
+      password
+    };
+    api.post('/users', signupUser)
+      .then((res) => {
+        signupElement[0].reset();
+        loginUser({username, password});
+        console.log('signup success');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  // login handler
+  function handleLoginPressed (e) {
+    e.preventDefault();
+    const loginElement = $(e.currentTarget);
+    const loginInfo = {
+      username: loginElement.find('.username-entry').val(),
+      password: loginElement.find('.password-entry').val()
+    };
+    // rename create later possibly post
+    loginUser(loginInfo);
   }
 
   // logout handler
@@ -131,6 +138,24 @@ const handlers = (function () {
     render();
   }
 
+  function handleMailTaskPressed () {
+    console.log('mail button pressed', store.toEditTask);
+    const targetTask = store.toEditTask[0];
+    const mailContent = {
+      title: targetTask.title,
+      category: targetTask.category,
+      content: targetTask.content
+    };
+    console.log('mail content', mailContent);
+
+    api.post('/send', mailContent)
+      .then((res) => {
+        console.log('mail res', res);
+        console.log('sending mail');
+      })
+      .catch((err) => { console.log("mail error", err); });
+  }
+
   function handleTaskCompleted (e) {
     const taskId = $(e.currentTarget).closest('.task').data('id');
     const task = store.findById(taskId);
@@ -183,6 +208,7 @@ const handlers = (function () {
     handleTaskCompleted,
     handleShowCompleted,
     handleTaskSearch,
-    handleEditSubmitPressed
+    handleEditSubmitPressed,
+    handleMailTaskPressed
   };
 }());

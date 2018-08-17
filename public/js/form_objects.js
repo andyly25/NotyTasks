@@ -9,7 +9,7 @@ const loginForm = {
       name: 'username',
       class: 'username-entry',
       placeholder: 'Username here',
-      value: 'someuser1@gmail.com'
+      value: 'notytask@gmail.com'
     },
     {
       labelFor: 'password',

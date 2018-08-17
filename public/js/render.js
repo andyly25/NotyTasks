@@ -170,6 +170,8 @@ function singleTaskScreen () {
     >
     <h2>Date: ${task.date}</h2> 
     <h2>Time: ${task.time}</h2>
+
+    <input class="task-mail task-button" type="button" value="Send to Email">
   `;
 }
 
