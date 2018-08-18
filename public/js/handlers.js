@@ -112,6 +112,7 @@ const handlers = (function () {
     console.log('edit task pressed');
     store.taskId = taskId;
     store.editTaskContent(taskId);
+    store.isEditTask();
     store.screen = 'edit-task';
     render();
   }
@@ -123,6 +124,7 @@ const handlers = (function () {
     api.put(`/tasks/${store.taskId}`, taskInput)
       .then((task) => {
         store.updateTask(task);
+        store.isEditTask();
         store.screen = 'tasks';
         render();
       });

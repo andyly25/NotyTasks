@@ -1,61 +1,55 @@
+// list elements for the basic forms (login, edit)
+const liForm = (input) => {
+  let inputValue = input.value;
+  if (store.isEdit) {
+    inputValue = input.value ? store.toEditTask[0][input.labelFor] : '';
+  }
+  return `
+    <li>
+      <label for="${input.labelFor}">${input.label}</label>
+      <input 
+        type="${input.type}" 
+        name="${input.name}" 
+        class="${input.class}" 
+        placeholder="${input.placeholder}"
+        value="${input.value ? inputValue : ''}"
+        >
+    </li>
+  `;
+};
 
+// Handles the elements within the fieldset
+const formFieldset = (form) => {
+  return `
+    <fieldset>
+      <legend>${form.legend}</legend>
+        <ul class="flex-outer">
+        ${form.inputs.map((input) => {
+          return liForm(input);
+          // .join('') removed the random commas between list elements
+          }).join('')} 
+          <li>
+            <button type="submit">Submit</button>
+          </li>
+        </ul>
+      </fieldset>
+  `;
+};
+
+// creates the basic form for signin, signup
 const createForm = (form) => {
   return `
     <form class="${form.classes}">
-      <fieldset>
-        <legend>${form.legend}</legend>
-          <ul class="flex-outer">
-          ${form.inputs.map((input) => {
-            return `
-              <li>
-                <label for="${input.labelFor}">${input.label}</label>
-                <input 
-                  type="${input.type}" 
-                  name="${input.name}" 
-                  class="${input.class}" 
-                  placeholder="${input.placeholder}"
-                  value="${input.value ? input.value : ''}"
-                  >
-              </li>
-            `;
-            // .join('') removed the random commas between list elements
-            }).join('')} 
-            <li>
-              <button type="submit">Submit</button>
-            </li>
-          </ul>
-        </fieldset>
+      ${formFieldset(form)}
     </form>
   `;
 };
 
+// creates form for edit tasks
 const createEditForm = (form) => {
   return `
     <form class="createtask-edit-css createtask-edit-form">
-      <fieldset>
-        <legend>${form.legend}</legend>
-          <ul class="flex-outer">
-          ${form.inputs.map((input) => {
-            const inputLabel = input.labelFor;
-            return `
-              <li>
-                <label for="${input.labelFor}">${input.label}</label>
-                <input 
-                  type="${input.type}" 
-                  name="${input.name}" 
-                  class="${input.class}" 
-                  placeholder="${input.placeholder}"
-                  value="${input.value ? store.toEditTask[0][inputLabel] : ''}"
-                  >
-              </li>
-            `;
-            // .join('') removed the random commas between list elements
-            }).join('')} 
-            <li>
-              <button type="submit">Submit</button>
-            </li>
-          </ul>
-        </fieldset>
+      ${formFieldset(form)}
     </form>
   `;
 };

@@ -59,12 +59,18 @@ const store = (function () {
     this.loggedIn = !this.loggedIn;
   }
 
+  function isEditTask () {
+    this.isEdit = !this.isEdit;
+  }
+
   return {
     authToken: '',
     showCompleted: false,
     loggedIn: false,
     searchInput: '',
     isLogged,
+    isEditTask,
+    isEdit: false,
     tasks: [],
     taskId: '',
     toEditTask: [],
