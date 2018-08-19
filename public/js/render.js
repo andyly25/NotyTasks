@@ -137,19 +137,31 @@ function separateCategories (obj) {
 function separateTasks (tasks) {
   return tasks.map((task) => {
     return `
-      <li class="card">
-      <span class="card-header" style="background-image: url(http://placeimg.com/400/200/animals);">
-        <span class="card-title">
-          <h3>This is a title for a card</h3>
+      <li class="card task" data-id="${task.id}">
+        <header class="card-header" style="background-image: url(${task.image});">
+          <span class="card-title">
+            <h3>${task.title}</h3>
+            <label>
+              <input 
+                class="task-completed"
+                type="checkbox" 
+                value="completed" 
+                ${task.completed ? 'checked' : ''}
+              > Completed 
+            </label>
+          </span>
+        </header>
+        <span class="card-buttons">
+          <input class="task-view task-button" type="button" value="view">
+          <input class="task-edit task-button" type="button" value="edit">
+          <input class="task-delete task-button" type="button" value="delete">
         </span>
-      </span>
-      <span class="card-summary">
-        A summary will also be present. Usually two to three brief sentences about the content on the detail page.
-      </span>
-      <span class="card-meta">
-        Published: June 18th, 2015
-      </span>
-    </li>
+        <span class="card-summary">${task.content}</span>
+        <span class="card-meta">
+          Due: ${moment(task.date).format('MM/DD/YYYY')}, 
+               ${moment(task.time, 'HH:mm').format('hh:mm A')}
+        </span>
+      </li>
     `;
   });
 }
@@ -170,16 +182,16 @@ function tasksScreen () {
   const taskList = separateCategories(categorizedTasks);
   const taskPage = `
     <h2>Task Page</h2>
-    <input class="task-add task-button" type="button" value="Add Task">
-    <input class="user-logout task-button" type="button" value="Log Out">
-    <input class="show-completed" id="show-completed" type="checkbox" 
-      ${store.showCompleted ? "checked" : ""}
-    >
-    <label for="show-completed">Show Completed</label>
+    <input class="task-add normal-button" type="button" value="Add Task">
+    <input class="user-logout normal-button" type="button" value="Log Out">
     <input class="task-search" type="search" name="q"
       placeholder="Search for tasks..."
       aria-label="Search through tasks"
     >
+    <input class="show-completed" id="show-completed" type="checkbox" 
+      ${store.showCompleted ? "checked" : ""}
+    >
+    <label for="show-completed">Show Completed</label>
     ${Object.keys(categorizedTasks).length === 0 ? emptyTasks() : taskList.join('')}
   `;
   return taskPage;
@@ -193,10 +205,10 @@ function singleTaskScreen () {
     <img src=${task.image} height="300px" width="300px"
       onerror="this.onerror=null;this.src='./missing.jpeg';"
     >
-    <h2>Date: ${task.date}</h2> 
-    <h2>Time: ${task.time}</h2>
+    <h2>Date: ${moment(task.date).format('MM/DD/YYYY')}</h2>  
+    <h2>Time: ${moment(task.time, 'HH:mm').format('hh:mm A')}</h2>
 
-    <input class="task-mail task-button" type="button" value="Send to Email">
+    <input class="task-mail normal-button" type="button" value="Send to Email">
   `;
 }
 

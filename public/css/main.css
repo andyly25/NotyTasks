@@ -184,6 +184,7 @@ img {
 
 .card span {
   display: block;
+  max-width: 100%;
 }
 
 .card .card-summary {
@@ -216,6 +217,9 @@ img {
   position: absolute;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  /* flex-wrap: wrap; */
 }
 
 .card .card-title h3 {
@@ -223,6 +227,26 @@ img {
   line-height: 1.2;
   padding: 0 3.5%;
   margin: 0;
+}
+
+.card .card-buttons {
+  align-items: stretch;
+  display: flex;
+}
+
+.card .task-button {
+  align-items: center;
+  display: flex;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: .75rem;
+  background: #333;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: 2px;
 }
 
 .card .card-meta {
@@ -332,7 +356,7 @@ fieldset legend {
   border-radius: 2px;
 }
 
-.task-button {
+.normal-button {
   margin-left: auto;
   padding: 8px 16px;
   border: none;
@@ -342,6 +366,7 @@ fieldset legend {
   letter-spacing: .09em;
   border-radius: 2px;
 }
+
 
 
 /* ==========================================================================
