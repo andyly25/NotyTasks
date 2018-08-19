@@ -1,20 +1,23 @@
 /*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
 
+
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  */
 
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 
 html {
-    color: #222;
-    font-size: 1em;
-    line-height: 1.4;
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
 }
+
 
 /*
  * Remove text-shadow in selection highlight:
@@ -27,27 +30,29 @@ html {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
+
 
 /*
  * A better looking default horizontal rule
  */
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
+
 
 /*
  * Remove the gap between audio, canvas, iframes,
@@ -61,12 +66,14 @@ iframe,
 img,
 svg,
 video {
-    vertical-align: middle;
+  vertical-align: middle;
 }
+
 
 /*
  * Remove default fieldset styles.
  */
+
 
 /* fieldset {
     border: 0;
@@ -74,96 +81,179 @@ video {
     padding: 0;
 } */
 
+
 /*
  * Allow only vertical resizing of textareas.
  */
 
 textarea {
-    resize: vertical;
+  resize: vertical;
 }
+
 
 /* ==========================================================================
    Browser Upgrade Prompt
    ========================================================================== */
 
 .browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
+
 
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
+
 /* background colors not official, just for testing purposes */
 
 html,
 body {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    flex-grow: 2;
-    background-color: #8e44ad;
+  flex-grow: 2;
+  background-color: #8e44ad;
 }
 
 header {
-    background: #235420;
+  background: #235420;
 }
 
 footer {
-    background: #543;
-    height: 100px;
+  background: #543;
+  height: 100px;
 }
 
-/* 
- * https://medium.com/flexbox-and-grids/how-to-create-horizontally-scrollable-sections-with-flexbox-60d860f539b2
- * testing how to make scrolling horizontal
- */
-.card {
-    display: flex;
-    /* background-color: #000; */
-    min-width: 100%;
-    min-height: 200px;
-    /* makes browser scroll only card section */
-    overflow-x: auto;
-    padding: 0;
+/* css for cards */
+img {
+  max-width: 100%;
 }
+
+* {
+  transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+}
+
 .container {
-    width: 100%;
-    height: 100%;
-    /* background-color: #8e44ad; */
-    margin: 0 auto;
+  margin: 0 auto;
+  padding: 1.5%;
 }
 
-/* hides the scroll bar */
-.card::-webkit-scrollbar {
-    display: none;
+.cards {
+  display: flex;
+  margin-top: 15px;
+  padding: 30px;
+  min-width: 100%;
+  min-height: 200px;
+  overflow-x: auto;
+  padding: 0;
+  font-size: 17px;
+  line-height: 1.4;
+  font-family: 'Jaldi', sans-serif;
 }
 
-.card--content {
-    background-color: #e74c3c;
-    min-width: 400px;
-    margin: 5px;
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card {
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  background: #fefff9;
+  color: #363636;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+  border-radius: 4px;
+  min-width: 400px;
+  text-decoration: none;
+  list-style-type: none;
 }
 
-.task{
-    background: black;
-    color: white;
+/* hides scrollbar */
+.cards::-webkit-scrollbar {
+  display: none;
 }
 
+.card span {
+  display: block;
+}
+
+.card .card-summary {
+  padding: 5% 5% 3% 5%;
+}
+
+.card .card-header {
+  position: relative;
+  height: 175px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  background-blend-mode: overlay;
+  border-radius: 4px 4px 0 0;
+}
+
+.card .card-header:hover,
+.card .card-header:focus {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.card .card-title {
+  background: rgba(157, 187, 63, 0.85);
+  padding: 3.5% 0 2.5% 0;
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.card .card-title h3 {
+  font-size: 1.2em;
+  line-height: 1.2;
+  padding: 0 3.5%;
+  margin: 0;
+}
+
+.card .card-meta {
+  max-height: 0;
+  overflow: hidden;
+  color: #666;
+  font-size: .78em;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 5%;
+  padding: 0 5%;
+  transition-property: max-height;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+}
+
+.card:hover,
+.card:focus {
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
+}
+
+.card:hover .card-title,
+.card:focus .card-title {
+  background: rgba(157, 187, 63, 0.95);
+}
+
+.card:hover .card-meta,
+.card:focus .card-meta {
+  max-height: 1em;
+}
 
 /* 
     Sign up css styles
@@ -171,105 +261,102 @@ footer {
  */
 
 fieldset legend {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 .container * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .login-css {
-    margin: 20px auto;
+  margin: 20px auto;
 }
 
 .flex-outer {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .flex-outer {
-    max-width: 800px;
-    margin: 0 auto;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .flex-outer li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.flex-outer > li:not(:last-child) {
-    margin-bottom: 20px;
+.flex-outer>li:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 .flex-outer li label,
 .flex-outer li p {
-    padding: 8px;
-    font-weight: 300;
-    letter-spacing: .09em;
-    text-transform: uppercase;
+  padding: 8px;
+  font-weight: 300;
+  letter-spacing: .09em;
+  text-transform: uppercase;
 }
 
-.flex-outer > li > label,
+.flex-outer>li>label,
 .flex-outer li p {
-    flex: 1 0 120px;
-    max-width: 220px;
+  flex: 1 0 120px;
+  max-width: 220px;
 }
+
 
 /* .flex-outer > li > label + * {
   flex: 1 0 220px;
 }
  */
+
 .flex-outer li p {
-    margin: 0;
+  margin: 0;
 }
 
 .flex-outer li input:not([type='checkbox']) {
-    padding: 15px;
-    border: none;
+  padding: 15px;
+  border: none;
 }
 
 .flex-outer li button {
-    margin-left: auto;
-    padding: 8px 16px;
-    border: none;
-    background: #333;
-    color: #f2f2f2;
-    text-transform: uppercase;
-    letter-spacing: .09em;
-    border-radius: 2px;
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  background: #333;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: 2px;
 }
 
 .task-button {
-    margin-left: auto;
-    padding: 8px 16px;
-    border: none;
-    background: #333;
-    color: #f2f2f2;
-    text-transform: uppercase;
-    letter-spacing: .09em;
-    border-radius: 2px;
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  background: #333;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: 2px;
 }
-
-
-
-
-
-
-
 
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
 
+
 /*
  * Hide visually and from screen readers
  */
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
+
 
 /*
  * Hide only visually, but have it available for screen readers:
@@ -281,16 +368,18 @@ fieldset legend {
  */
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    white-space: nowrap; /* 1 */
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  /* 1 */
 }
+
 
 /*
  * Extends the .visuallyhidden class to allow the element
@@ -300,22 +389,24 @@ fieldset legend {
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-    white-space: inherit;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+  white-space: inherit;
 }
+
 
 /*
  * Hide visually and from screen readers, but maintain layout
  */
 
 .invisible {
-    visibility: hidden;
+  visibility: hidden;
 }
+
 
 /*
  * Clearfix: contain floats
@@ -331,40 +422,46 @@ fieldset legend {
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
+
 /* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
+   Media Queries for Responsive Design.
+   override the primary ('mobile first') styles.
    ========================================================================== */
 
 @media only screen and (min-width: 320px) {
-    /* Style adjustments for viewports that meet the condition */
-    .flex-outer > li > label + * {
-        flex: 1 0 100%;
-    }
+  /* Style adjustments for viewports that meet the condition */
+  .flex-outer>li>label+* {
+    flex: 1 0 100%;
+  }
+  .card {
+    margin-right: 20px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
-    /* Style adjustments for viewports that meet the condition */
-    .flex-outer > li > label + * {
-        flex: 1 0 220px;
-    }
+  /* Style adjustments for viewports that meet the condition */
+  .flex-outer>li>label+* {
+    flex: 1 0 220px;
+  }
 }
 
 @media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
 }
+
 
 /* ==========================================================================
    Print styles.
@@ -373,71 +470,61 @@ fieldset legend {
    ========================================================================== */
 
 @media print {
-    *,
-    *:before,
-    *:after {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster */
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster */
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /*
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-
-    pre {
-        white-space: pre-wrap !important;
-    }
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    /*
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  /*
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
-
-    thead {
-        display: table-header-group;
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }

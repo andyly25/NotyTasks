@@ -82,11 +82,52 @@ function editTaskScreen () {
   `;
 }
 
+// function separateCategories (obj) {
+//   return _.map(obj, (arrayTasks) => {
+//     return `
+//       <h2>Category: ${arrayTasks[0].category}</h2>
+//       <ul class="card">
+//       ${separateTasks(arrayTasks).join('')}
+//       </ul>
+//     `;
+//   });
+// }
+
+// function separateTasks (tasks) {
+//   return tasks.map((task) => {
+//     return `
+//       <li class="card--content">
+//         <div class="task" data-id="${task.id}">
+//           <h2>${task.title}</h2>
+//           <img src=${task.image} height="200px" width="200px"
+//             onerror="this.onerror=null;this.src='./missing.jpeg';"
+//           >
+//           <p>Due: 
+//             ${moment(task.date).format('MM/DD/YYYY')}, 
+//             ${moment(task.time, 'HH:mm').format('hh:mm A')}
+//           </p>
+//           <input class="task-view task-button" type="button" value="view">
+//           <input class="task-edit task-button" type="button" value="edit">
+//           <input class="task-delete task-button" type="button" value="delete">
+//           <label>
+//             <input 
+//               class="task-completed"
+//               type="checkbox" 
+//               value="completed" 
+//               ${task.completed ? 'checked' : ''}
+//             > Completed
+//           </label>
+//         </div>
+//       </li>
+//     `;
+//   });
+// }
+
 function separateCategories (obj) {
   return _.map(obj, (arrayTasks) => {
     return `
       <h2>Category: ${arrayTasks[0].category}</h2>
-      <ul class="card">
+      <ul class="cards">
       ${separateTasks(arrayTasks).join('')}
       </ul>
     `;
@@ -96,29 +137,19 @@ function separateCategories (obj) {
 function separateTasks (tasks) {
   return tasks.map((task) => {
     return `
-      <li class="card--content">
-        <div class="task" data-id="${task.id}">
-          <h2>${task.title}</h2>
-          <img src=${task.image} height="200px" width="200px"
-            onerror="this.onerror=null;this.src='./missing.jpeg';"
-          >
-          <p>Due: 
-            ${moment(task.date).format('MM/DD/YYYY')}, 
-            ${moment(task.time, 'HH:mm').format('hh:mm A')}
-          </p>
-          <input class="task-view task-button" type="button" value="view">
-          <input class="task-edit task-button" type="button" value="edit">
-          <input class="task-delete task-button" type="button" value="delete">
-          <label>
-            <input 
-              class="task-completed"
-              type="checkbox" 
-              value="completed" 
-              ${task.completed ? 'checked' : ''}
-            > Completed
-          </label>
-        </div>
-      </li>
+      <li class="card">
+      <span class="card-header" style="background-image: url(http://placeimg.com/400/200/animals);">
+        <span class="card-title">
+          <h3>This is a title for a card</h3>
+        </span>
+      </span>
+      <span class="card-summary">
+        A summary will also be present. Usually two to three brief sentences about the content on the detail page.
+      </span>
+      <span class="card-meta">
+        Published: June 18th, 2015
+      </span>
+    </li>
     `;
   });
 }
