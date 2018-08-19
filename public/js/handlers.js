@@ -96,7 +96,7 @@ const handlers = (function () {
       .catch((err) => { console.log(err); });
   }
 
-  function handleLogoPressed (e) {
+  function handleHomePressed (e) {
     store.screen = store.loggedIn ? 'tasks' : 'login';
     render();
   }
@@ -198,7 +198,7 @@ const handlers = (function () {
   }
 
   return {
-    handleLogoPressed,
+    handleHomePressed,
     handleSignupPressed,
     handleLoginPressed,
     handleLogoutPressed,
