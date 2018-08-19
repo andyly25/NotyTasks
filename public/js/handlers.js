@@ -31,14 +31,13 @@ const handlers = (function () {
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   // #### Handler functions ####
   // signin handler
   function handleSignupPressed (e) {
     e.preventDefault();
 
-    console.log('sign up attempt!');
     const signupElement = $(e.currentTarget);
     const username = signupElement.find('.username-entry').val();
     const password = signupElement.find('.password-entry').val();
@@ -82,13 +81,11 @@ const handlers = (function () {
   function handlePostTaskPressed (e) {
     e.preventDefault();
 
-    console.log('task create attempt!');
     const taskElement = $(e.currentTarget);
     const taskInput = getFormInfo(taskElement);
     // Create a task
     api.post('/tasks', taskInput)
       .then((res) => {
-        console.log('inside task create', res);
         store.addToTasks(res);
         store.screen = 'tasks';
         render();
@@ -98,6 +95,7 @@ const handlers = (function () {
 
   function handleHomePressed (e) {
     store.screen = store.loggedIn ? 'tasks' : 'login';
+    store.searchInput = '';
     render();
   }
 
@@ -109,7 +107,6 @@ const handlers = (function () {
   function handleEditTaskPressed (e) {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
-    console.log('edit task pressed');
     store.taskId = taskId;
     store.editTaskContent(taskId);
     store.isEditTask();
@@ -133,7 +130,6 @@ const handlers = (function () {
   function handleViewTaskPressed (e) {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
-    console.log('view task pressed');
     store.taskId = taskId;
     store.editTaskContent(taskId);
     store.screen = 'view-task';
@@ -141,7 +137,6 @@ const handlers = (function () {
   }
 
   function handleMailTaskPressed () {
-    console.log('mail button pressed', store.toEditTask);
     const targetTask = store.toEditTask[0];
     const mailContent = {
       title: targetTask.title,
@@ -162,7 +157,6 @@ const handlers = (function () {
     const taskId = $(e.currentTarget).closest('.task').data('id');
     const task = store.findById(taskId);
     task.completed = !task.completed;
-    console.log(task);
     api.put(`/tasks/${task.id}`, task)
       .then((task) => {
         store.updateTask(task);
@@ -178,7 +172,6 @@ const handlers = (function () {
 
   function handleTaskSearch (e) {
     e.preventDefault();
-    console.log('searching for tasks');
     const taskElement = $(e.currentTarget);
     store.searchInput = taskElement.val();
     console.log('store.searchInput', taskElement.val());

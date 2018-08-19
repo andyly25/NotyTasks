@@ -64,6 +64,33 @@ function loginSigninScreen () {
   `;
 }
 
+function createNavBar () {
+  console.log('create nav bar');
+  return `
+    <ul class="main-nav">
+      <li><h1 class="logo">NotyTasks</h1></li>
+      <li>
+        <input class="task-add normal-button" type="button" value="Add Task">
+      </li>
+      <li>
+        <input class="user-logout normal-button" type="button" value="Log Out">
+      </li>
+      <li>
+        <input class="task-search" type="search" name="q"
+        placeholder="Search for tasks..."
+        aria-label="Search through tasks"
+        >
+      </li>
+      <li>
+        <input class="show-completed" id="show-completed" type="checkbox" 
+        ${store.showCompleted ? "checked" : ""}
+        >
+        <label for="show-completed">Show Completed</label>
+      </li>
+    </ul>
+  `;
+}
+
 function createTaskScreen () {
   return `
     <h2>Task Screen</h2>
@@ -178,6 +205,7 @@ const render = () => {
       $('.container').html(loginSigninScreen());
       break;
     case 'tasks':
+      $('.main_header').html(createNavBar());
       $('.container').html(tasksScreen());
       break;
     case 'create-task':
