@@ -157,6 +157,7 @@ body {
 }
 
 .logo {
+  cursor: pointer;
   margin-left: 40px;
   text-decoration: none;
   transform: perspective(2.5em) rotateX(15deg) scaleY(0.8);
@@ -477,6 +478,7 @@ fieldset legend {
 }
 
 .normal-button {
+  cursor: pointer;
   margin-left: auto;
   padding: 8px 16px;
   border: none;
@@ -485,6 +487,10 @@ fieldset legend {
   text-transform: uppercase;
   letter-spacing: .09em;
   border-radius: 2px;
+}
+.normal-button:hover,
+.normal-button:focus {
+  background: #595959;
 }
 
 

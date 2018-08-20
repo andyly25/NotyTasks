@@ -5,6 +5,8 @@
 const handlers = (function () {
 
   // #### Helper functions ####
+
+  // grabbing form information
   const getFormInfo = (form) => {
     return {
       title: form.find('.title-entry').val(),
@@ -16,6 +18,7 @@ const handlers = (function () {
     };
   };
 
+  // handles the user login process after user submits information
   const loginUser = (loginInfo) => {
     api.post('/auth/login', loginInfo)
       .then((res) => {
@@ -34,7 +37,7 @@ const handlers = (function () {
   };
 
   // #### Handler functions ####
-  // signin handler
+  // signin handler: when users are signing up
   function handleSignupPressed (e) {
     e.preventDefault();
 
@@ -50,7 +53,7 @@ const handlers = (function () {
     api.post('/users', signupUser)
       .then((res) => {
         signupElement[0].reset();
-        loginUser({username, password});
+        loginUser({ username, password });
         console.log('signup success');
       })
       .catch((err) => {
@@ -58,7 +61,7 @@ const handlers = (function () {
       });
   }
 
-  // login handler
+  // login handler, when users login
   function handleLoginPressed (e) {
     e.preventDefault();
     const loginElement = $(e.currentTarget);
@@ -83,7 +86,7 @@ const handlers = (function () {
 
     const taskElement = $(e.currentTarget);
     const taskInput = getFormInfo(taskElement);
-    // Create a task
+    // POST a task
     api.post('/tasks', taskInput)
       .then((res) => {
         store.addToTasks(res);
@@ -93,17 +96,21 @@ const handlers = (function () {
       .catch((err) => { console.log(err); });
   }
 
+  // bring to home page, which should be the tasks page after signing in
+  // This is mainly from the logo button pressed
   function handleHomePressed (e) {
     store.screen = store.loggedIn ? 'tasks' : 'login';
     store.searchInput = '';
     render();
   }
 
+  // Brings users to add task screen
   function handleAddTaskPressed (e) {
     store.screen = 'create-task';
     render();
   }
 
+  // Brings users to edit task screen
   function handleEditTaskPressed (e) {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
@@ -114,6 +121,7 @@ const handlers = (function () {
     render();
   }
 
+  // When user press submit in edit task screen, we update and return to home
   function handleEditSubmitPressed (e) {
     e.preventDefault();
     const taskElement = $(e.currentTarget);
@@ -127,6 +135,7 @@ const handlers = (function () {
       });
   }
 
+  // shows you an individual task in form of modal
   function handleViewTaskPressed (e) {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
@@ -139,18 +148,23 @@ const handlers = (function () {
     render();
   }
 
+  // handles closing modal from X from top right
   function handleCloseModal () {
     const modal = document.getElementById('myModal');
     modal.style.display = 'none';
+    handleHomePressed();
   }
 
+  // handles closing modal if press outside modal
   function handleCloseOutsideModal (e) {
     const modal = document.getElementById('myModal');
     if (e.target === modal) {
       modal.style.display = 'none';
+      handleHomePressed();
     }
   }
 
+  // handles sending the mail
   function handleMailTaskPressed () {
     const targetTask = store.toEditTask[0];
     const mailContent = {
@@ -160,7 +174,7 @@ const handlers = (function () {
       date: moment(targetTask.date).format('MM/DD/YYYY'),
       time: moment(targetTask.time, 'HH:mm').format('hh:mm A')
     };
-    
+
     console.log('mail content', mailContent);
 
     api.post('/send', mailContent)
@@ -168,9 +182,10 @@ const handlers = (function () {
         console.log('mail res', res);
         console.log('sending mail');
       })
-      .catch((err) => { console.log("mail error", err); });
+      .catch((err) => { console.log('mail error', err); });
   }
 
+  // handles the checkbox signifying completed task
   function handleTaskCompleted (e) {
     const taskId = $(e.currentTarget).closest('.task').data('id');
     const task = store.findById(taskId);
@@ -183,11 +198,13 @@ const handlers = (function () {
       });
   }
 
+  // shows completed tasks
   function handleShowCompleted () {
     store.showCompleted = !store.showCompleted;
     render();
   }
 
+  // Allows you to search for tasks
   function handleTaskSearch (e) {
     e.preventDefault();
     const taskElement = $(e.currentTarget);
@@ -196,6 +213,7 @@ const handlers = (function () {
     render();
   }
 
+  // Deletes a task
   function handleTaskDeletePressed (e) {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
