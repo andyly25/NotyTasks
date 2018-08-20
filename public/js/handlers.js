@@ -94,6 +94,7 @@ const handlers = (function () {
   }
 
   function handleHomePressed (e) {
+    console.log('apples');
     store.screen = store.loggedIn ? 'tasks' : 'login';
     store.searchInput = '';
     render();

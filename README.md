@@ -15,6 +15,8 @@ In the end the thing that it has in common is that you edit and manage tasks.
 - ~~Make it so username is in e-mail format~~
 - ~~figure out how to send an e-mail with tasks~~
 - reset search filter
+- make view tasks as a modal
+- possibly allow users to upload image
 - notifications to notify completion
 - refactor the code
 - Prettify with CSS and things

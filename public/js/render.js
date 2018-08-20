@@ -54,6 +54,7 @@ const createEditForm = (form) => {
   `;
 };
 
+// creates login sign in form
 function loginSigninScreen () {
   return `
     <h2>Site introduction</h2>
@@ -64,33 +65,20 @@ function loginSigninScreen () {
   `;
 }
 
+// creates nav bar at the top with logo and logout
 function createNavBar () {
   console.log('create nav bar');
   return `
     <ul class="main-nav">
-      <li><h1 class="logo">NotyTasks</h1></li>
-      <li>
-        <input class="task-add normal-button" type="button" value="Add Task">
-      </li>
+      <li><h1 class="logo site-logo">Noty<br>Tasks</h1></li>
       <li>
         <input class="user-logout normal-button" type="button" value="Log Out">
-      </li>
-      <li>
-        <input class="task-search" type="search" name="q"
-        placeholder="Search for tasks..."
-        aria-label="Search through tasks"
-        >
-      </li>
-      <li>
-        <input class="show-completed" id="show-completed" type="checkbox" 
-        ${store.showCompleted ? "checked" : ""}
-        >
-        <label for="show-completed">Show Completed</label>
       </li>
     </ul>
   `;
 }
 
+// form to create a task
 function createTaskScreen () {
   return `
     <h2>Task Screen</h2>
@@ -100,6 +88,7 @@ function createTaskScreen () {
   `;
 }
 
+// edit task screen
 function editTaskScreen () {
   return `
     <h2>Edit Task Screen</h2>
@@ -109,6 +98,7 @@ function editTaskScreen () {
   `;
 }
 
+// separate tasks based on categories
 function separateCategories (obj) {
   return _.map(obj, (arrayTasks) => {
     return `
@@ -120,6 +110,7 @@ function separateCategories (obj) {
   });
 }
 
+// separate each tasks within category
 function separateTasks (tasks) {
   return tasks.map((task) => {
     return `
@@ -152,6 +143,7 @@ function separateTasks (tasks) {
   });
 }
 
+// after user logs in, display user's task(s)
 function tasksScreen () {
   const categorizedTasks = store.categorizeTasks();
   console.log('categorizedTasks', categorizedTasks);
@@ -169,7 +161,6 @@ function tasksScreen () {
   const taskPage = `
     <h2>Task Page</h2>
     <input class="task-add normal-button" type="button" value="Add Task">
-    <input class="user-logout normal-button" type="button" value="Log Out">
     <input class="task-search" type="search" name="q"
       placeholder="Search for tasks..."
       aria-label="Search through tasks"
@@ -183,6 +174,7 @@ function tasksScreen () {
   return taskPage;
 }
 
+// viewing an individual task
 function singleTaskScreen () {
   const task = store.toEditTask[0];
   return `
@@ -205,7 +197,7 @@ const render = () => {
       $('.container').html(loginSigninScreen());
       break;
     case 'tasks':
-      $('.main_header').html(createNavBar());
+      $('.main-header').html(createNavBar());
       $('.container').html(tasksScreen());
       break;
     case 'create-task':
