@@ -169,9 +169,44 @@ function tasksScreen () {
       ${store.showCompleted ? "checked" : ""}
     >
     <label for="show-completed">Show Completed</label>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <p> task content will be in here!</p>
+    </div>
+
     ${Object.keys(categorizedTasks).length === 0 ? emptyTasks() : taskList.join('')}
   `;
   return taskPage;
+}
+
+function singleTaskModal () {
+  const task = store.toEditTask[0];
+
+  return `
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>${task.title}</h2>
+      </div>
+      <div class="modal-body">
+        <h2>Category: ${task.category}</h2>
+        <img src=${task.image} height="300px" width="300px"
+          onerror="this.onerror=null;this.src='./missing.jpeg';"
+        >
+        <p>${task.content}</p>
+        <p> 
+        Due: ${moment(task.date).format('MM/DD/YYYY')}, 
+             ${moment(task.time, 'HH:mm').format('hh:mm A')}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <input class="task-mail normal-button" type="button" value="Send to Email">
+        <input class="return-home normal-button" type="button" value="Close">
+      </div>
+    </div>
+  `;
 }
 
 // viewing an individual task
@@ -204,7 +239,8 @@ const render = () => {
       $('.container').html(createTaskScreen());
       break;
     case 'view-task':
-      $('.container').html(singleTaskScreen());
+      // $('.container').html(singleTaskScreen());
+      $('#myModal').html(singleTaskModal());
       break;
     case 'edit-task':
       $('.container').html(editTaskScreen());

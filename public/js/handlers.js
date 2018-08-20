@@ -94,7 +94,6 @@ const handlers = (function () {
   }
 
   function handleHomePressed (e) {
-    console.log('apples');
     store.screen = store.loggedIn ? 'tasks' : 'login';
     store.searchInput = '';
     render();
@@ -133,8 +132,23 @@ const handlers = (function () {
     const taskId = taskElement.closest('.task').data('id');
     store.taskId = taskId;
     store.editTaskContent(taskId);
+
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'block';
     store.screen = 'view-task';
     render();
+  }
+
+  function handleCloseModal () {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+  }
+
+  function handleCloseOutsideModal (e) {
+    const modal = document.getElementById('myModal');
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
   }
 
   function handleMailTaskPressed () {
@@ -142,8 +156,11 @@ const handlers = (function () {
     const mailContent = {
       title: targetTask.title,
       category: targetTask.category,
-      content: targetTask.content
+      content: targetTask.content,
+      date: moment(targetTask.date).format('MM/DD/YYYY'),
+      time: moment(targetTask.time, 'HH:mm').format('hh:mm A')
     };
+    
     console.log('mail content', mailContent);
 
     api.post('/send', mailContent)
@@ -200,6 +217,8 @@ const handlers = (function () {
     handleTaskDeletePressed,
     handleAddTaskPressed,
     handleViewTaskPressed,
+    handleCloseModal,
+    handleCloseOutsideModal,
     handleEditTaskPressed,
     handleTaskCompleted,
     handleShowCompleted,
