@@ -67,7 +67,6 @@ function loginSigninScreen () {
 
 // creates nav bar at the top with logo and logout
 function createNavBar () {
-  console.log('create nav bar');
   return `
     <ul class="main-nav">
       <li><h1 class="logo site-logo">Noty<br>Tasks</h1></li>
@@ -146,7 +145,6 @@ function separateTasks (tasks) {
 // after user logs in, display user's task(s)
 function tasksScreen () {
   const categorizedTasks = store.categorizeTasks();
-  console.log('categorizedTasks', categorizedTasks);
 
   const emptyTasks = () => {
     const searchInput = store.searchInput;

@@ -20,7 +20,6 @@ exports.postMail = (req, res) => {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     service: 'gmail',
-    // REMEMBER TO NOT LEAVE THIS HERE
     auth: {
       user: EMAIL_UN,
       pass: EMAIL_PW

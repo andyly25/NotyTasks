@@ -4,7 +4,16 @@
 // Where our handlers are located
 const handlers = (function () {
 
-  // #### Helper functions ####
+  function snackBarMessage (text) {
+    // get snackbar from div
+    const target = document.getElementById('snackbar');
+    // let's edit the popup message
+    target.textContent = text;
+    // add show class to div
+    target.className = 'show';
+    // after 3 secs, removes show class from div
+    setTimeout(() => { target.className = target.className.replace('show', ''); }, 3000);
+  }
 
   // grabbing form information
   const getFormInfo = (form) => {
@@ -30,9 +39,11 @@ const handlers = (function () {
         store.addAllTasks(tasks);
         store.screen = 'tasks';
         render();
+        snackBarMessage('User successfully logged in!');
       })
       .catch((err) => {
         console.log(err);
+        snackBarMessage('Error logging in, mispelled username or password?');
       });
   };
 
@@ -54,10 +65,11 @@ const handlers = (function () {
       .then((res) => {
         signupElement[0].reset();
         loginUser({ username, password });
-        console.log('signup success');
+        snackBarMessage('signup success!');
       })
       .catch((err) => {
         console.log(err);
+        snackBarMessage('Something went wrong with the sign up process');
       });
   }
 
@@ -78,6 +90,7 @@ const handlers = (function () {
     e.preventDefault();
     store.isLogged();
     window.location.href = '/auth/logout';
+    snackBarMessage('user has successfully logged out');
   }
 
   // create Task Handler
@@ -92,6 +105,7 @@ const handlers = (function () {
         store.addToTasks(res);
         store.screen = 'tasks';
         render();
+        snackBarMessage('new task has been added!');
       })
       .catch((err) => { console.log(err); });
   }
@@ -132,6 +146,7 @@ const handlers = (function () {
         store.isEditTask();
         store.screen = 'tasks';
         render();
+        snackBarMessage('task has been successfully edited!');
       });
   }
 
@@ -175,12 +190,10 @@ const handlers = (function () {
       time: moment(targetTask.time, 'HH:mm').format('hh:mm A')
     };
 
-    console.log('mail content', mailContent);
-
     api.post('/send', mailContent)
       .then((res) => {
-        console.log('mail res', res);
-        console.log('sending mail');
+    snackBarMessage('user has successfully logged out');
+        snackBarMessage('mail has been successfully sent!');
       })
       .catch((err) => { console.log('mail error', err); });
   }
@@ -218,12 +231,15 @@ const handlers = (function () {
     const taskElement = $(e.currentTarget);
     const taskId = taskElement.closest('.task').data('id');
 
-    api.remove(`/tasks/${taskId}`)
-      .then(() => {
-        console.log('inside delete pressed');
-        store.findAndRemove(taskId);
-        render();
-      });
+    const isDelete = confirm('Permanently delete task?');
+    if (isDelete === true) {
+      api.remove(`/tasks/${taskId}`)
+        .then(() => {
+          store.findAndRemove(taskId);
+          render();
+          snackBarMessage('task has been permanently deleted');
+        });
+    }
   }
 
   return {
