@@ -3,7 +3,6 @@ const nodemailer = require('nodemailer');
 const { EMAIL_UN, EMAIL_PW } = require('../config');
 
 exports.postMail = (req, res) => {
-  console.log('POSTMAIL', req.body);
   const output = `
     <p>Greetings from Notytask! You have a task to complete!</p>
     <h2>${req.body.title}</h2>

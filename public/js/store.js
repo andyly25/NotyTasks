@@ -1,3 +1,12 @@
+const emptyTaskObj = [{
+  title: '',
+  image: '',
+  content: '',
+  date: '',
+  time: '',
+  category: '',
+  completed: ''
+}];
 
 // Store file to grab variables and data needed
 const store = (function () {
@@ -79,7 +88,7 @@ const store = (function () {
     isEdit: false,
     tasks: [],
     taskId: '',
-    toEditTask: [],
+    toEditTask: emptyTaskObj,
     addToTasks,
     addAllTasks,
     findAndRemove,

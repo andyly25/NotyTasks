@@ -5,7 +5,7 @@ const liForm = (input) => {
     inputValue = input.value ? store.toEditTask[0][input.labelFor] : '';
   }
   return `
-    <li>
+    <li class="li-${input.class}">
       <label for="${input.labelFor}">${input.label}</label>
       <input 
         type="${input.type}" 
@@ -18,6 +18,35 @@ const liForm = (input) => {
   `;
 };
 
+// const taskFieldset = (form) => {
+//   console.log(store.toEditTask);
+//   const content = store.toEditTask[0].content || '';
+//   return `
+//     <fieldset>
+//       <legend>${form.legend}</legend>
+//         <ul class="flex-outer">
+//         ${form.inputs.map((input) => {
+//           return liForm(input);
+//           // .join('') removed the random commas between list elements
+//           }).join('')}
+//           <li>
+//             <label for="content">Content:</label>
+//             <textarea  
+//               name="content" 
+//               class="task-content" 
+//               placeholder="Enter in your task content here"
+//               rows="10"
+//               value="${content ? content : ''}"
+//               ></textarea>
+//           </li>
+//           <li>
+//             <button type="submit">Submit</button>
+//           </li>
+//         </ul>
+//       </fieldset>
+//   `;
+// };
+
 // Handles the elements within the fieldset
 const formFieldset = (form) => {
   return `
@@ -27,7 +56,7 @@ const formFieldset = (form) => {
         ${form.inputs.map((input) => {
           return liForm(input);
           // .join('') removed the random commas between list elements
-          }).join('')} 
+          }).join('')}
           <li>
             <button type="submit">Submit</button>
           </li>
@@ -234,6 +263,22 @@ function singleTaskScreen () {
   `;
 }
 
+function contentTextarea () {
+  const content = store.toEditTask[0].content || '';
+  return `
+    <li>
+      <label for="content">Content:</label>
+      <textarea  
+        name="content" 
+        class="content-entry" 
+        placeholder="Enter in your task content here"
+        rows="10"
+        value=""
+        >${content}</textarea>
+    </li>
+  `;
+}
+
 const render = () => {
   switch (store.screen) {
     case 'login':
@@ -245,12 +290,15 @@ const render = () => {
       break;
     case 'create-task':
       $('.container').html(createTaskScreen());
+      // change input content into textarea
+      $('.li-content-entry').replaceWith(contentTextarea());
       break;
     case 'view-task':
       $('#myModal').html(singleTaskModal());
       break;
     case 'edit-task':
       $('.container').html(editTaskScreen());
+      $('.li-content-entry').replaceWith(contentTextarea());
       break;
     default:
       console.log('ERROR');
