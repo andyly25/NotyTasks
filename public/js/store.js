@@ -1,12 +1,3 @@
-// const emptyTaskObj = [{
-//   title: '',
-//   image: '',
-//   content: '',
-//   date: '',
-//   time: '',
-//   category: '',
-//   completed: ''
-// }];
 
 // Store file to grab variables and data needed
 const store = (function () {
@@ -55,6 +46,14 @@ const store = (function () {
     return _.groupBy(arr, 'category');
   }
 
+  // shorten task preview content to certain length
+  function textTruncate (str, length = 100, ending = '...') {
+    const result = (str.length > length)
+      ? str.substring(0, length - ending.length) + ending
+      : str;
+    return result;
+  }
+
   function isLogged () {
     this.loggedIn = !this.loggedIn;
   }
@@ -75,6 +74,7 @@ const store = (function () {
     loggedIn: false,
     searchInput: '',
     isLogged,
+    textTruncate,
     isEditTask,
     isEdit: false,
     tasks: [],

@@ -22,25 +22,24 @@ exports.uploadImage = async (req, res) => {
       await cloudinary.v2.uploader.upload(filePath, (error, result) => {
         if (upload_res.length === upload_len) {
           /* resolve promise after upload is complete */
-          resolve(upload_res)
-        } else if(result) {
+          resolve(upload_res);
+        } else if (result) {
           /*push public_ids in an array */  
           upload_res.push(result.public_id);
-        } else if(error) {
-          console.log(error)
-          reject(error)
+        } else if (error) {
+          console.log(error);
+          reject(error);
         }
       });
-    };
+    }
   })
-  .then((result) => result)
-  .catch((error) => error)
+    .then((result) => result)
+    .catch((error) => error);
 
   /*waits until promise is resolved before sending back response to user*/
-  let upload = await multipleUpload; 
-  res.json({'response':upload})
-}
-
+  let upload = await multipleUpload;
+  res.json({ 'response':upload });
+};
 
 // Using GET
 exports.getTasks = (req, res) => {

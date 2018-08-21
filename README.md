@@ -21,9 +21,6 @@ In the end the thing that it has in common is that you edit and manage tasks.
 - ~~notifications to notify completion~~
 - make content box of forms larger
 - for task preview, show snippet of content box
-- refactor the code
-- Prettify with CSS and things
-  - find color scheme of site you like
 - ~~show completed has 1st task stretched out: flex related~~
 - add task to far right
 - adjust search box to be a bit bigger
@@ -34,4 +31,7 @@ In the end the thing that it has in common is that you edit and manage tasks.
   - login sign up side by side maybe?
     - click login shows login and vice versa
   - set up dummy account for usage
-
+- refactor the code
+- Prettify with CSS and things
+  - find color scheme of site you like
+- don't forget accessibility!

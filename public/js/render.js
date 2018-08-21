@@ -143,7 +143,7 @@ function separateTasks (tasks) {
           <input class="task-edit task-button" type="button" value="edit">
           <input class="task-delete task-button" type="button" value="delete">
         </span>
-        <span class="card-summary">${task.content}</span>
+        <span class="card-summary">${store.textTruncate(task.content)}</span>
         <span class="card-meta">
           Due: ${moment(task.date).format('MM/DD/YYYY')}, 
                ${moment(task.time, 'HH:mm').format('hh:mm A')}
@@ -154,6 +154,7 @@ function separateTasks (tasks) {
 }
 
 // after user logs in, display user's task(s)
+// where users can add, edit, delete, view their tasks
 function tasksScreen () {
   const categorizedTasks = store.categorizeTasks();
 
@@ -168,7 +169,6 @@ function tasksScreen () {
 
   const taskList = separateCategories(categorizedTasks);
   const taskPage = `
-    <h2>Task Page</h2>
     <input class="task-add normal-button" type="button" value="Add Task">
     <input class="task-search" type="search" name="q"
       placeholder="Search for tasks..."
@@ -212,7 +212,6 @@ function singleTaskModal () {
       </div>
       <div class="modal-footer">
         <input class="task-mail normal-button" type="button" value="Send to Email">
-        <input class="return-home normal-button" type="button" value="Close">
       </div>
     </div>
   `;
