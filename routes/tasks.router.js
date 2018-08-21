@@ -10,6 +10,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 router.get('/', jwtAuth, taskController.getTasks);
 // router.get('/:id', taskController.getTaskId);
 router.post('/', jwtAuth, taskController.postTask);
+router.post('/image', jwtAuth, taskController.uploadImage);
 router.delete('/:id', jwtAuth, taskController.deleteTask);
 router.put('/:id', jwtAuth, taskController.putTask);
 

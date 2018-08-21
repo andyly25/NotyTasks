@@ -1,6 +1,46 @@
 const Task = require('../models/task.model');
-// console.log("Inside task controller js");
 const User = require('../models/user.model');
+
+const cloudinary = require('cloudinary');
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET
+});
+
+exports.uploadImage = async (req, res) => {
+  /* we would receive a request of file paths as array */
+  let filePaths = req.body.filePaths;
+
+  let multipleUpload = new Promise(async (resolve, reject) => {
+    let upload_len = filePaths.length
+        ,upload_res = new Array();
+
+    for (let i = 0; i <= upload_len + 1; i += 1) {
+      let filePath = filePaths[i];
+      await cloudinary.v2.uploader.upload(filePath, (error, result) => {
+        if (upload_res.length === upload_len) {
+          /* resolve promise after upload is complete */
+          resolve(upload_res)
+        } else if(result) {
+          /*push public_ids in an array */  
+          upload_res.push(result.public_id);
+        } else if(error) {
+          console.log(error)
+          reject(error)
+        }
+      });
+    };
+  })
+  .then((result) => result)
+  .catch((error) => error)
+
+  /*waits until promise is resolved before sending back response to user*/
+  let upload = await multipleUpload; 
+  res.json({'response':upload})
+}
+
 
 // Using GET
 exports.getTasks = (req, res) => {

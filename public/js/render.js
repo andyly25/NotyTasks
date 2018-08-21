@@ -57,10 +57,22 @@ const createEditForm = (form) => {
 // creates login sign in form
 function loginSigninScreen () {
   return `
-    <h2>Site introduction</h2>
     <section class="login-signin">
-      ${createForm(loginForm)}
-      ${createForm(signupForm)}
+      <div class="left">
+        <h2> Welcome to Notytask!</h2>
+        <p> As a user, you can </p>
+        <ol>
+          <li>Create Tasks</li>
+          <li>Customize tasks with images</li>
+          <li>E-mail the task to yourself as a reminder</li>
+          <li>sneak peek with dummy account (username: someuser@gmail.com password: someuser)
+          <li>Sign up now if you haven't yet!</li>
+        </ol>
+        <input class="user-signup normal-button" type="button" value="Sign Up">
+      </div>
+      <div class="right">
+        ${store.needSignup ? createForm(signupForm) : createForm(loginForm)}
+      </div>
     </section>
   `;
 }
@@ -80,7 +92,6 @@ function createNavBar () {
 // form to create a task
 function createTaskScreen () {
   return `
-    <h2>Task Screen</h2>
     <section class="task-screen">
       ${createForm(createtaskForm)}
     </section>
@@ -237,7 +248,6 @@ const render = () => {
       $('.container').html(createTaskScreen());
       break;
     case 'view-task':
-      // $('.container').html(singleTaskScreen());
       $('#myModal').html(singleTaskModal());
       break;
     case 'edit-task':

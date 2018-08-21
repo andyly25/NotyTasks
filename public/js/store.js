@@ -63,9 +63,15 @@ const store = (function () {
     this.isEdit = !this.isEdit;
   }
 
+  function isSignup () {
+    this.needSignup = !this.needSignup;
+  }
+
   return {
     authToken: '',
     showCompleted: false,
+    needSignup: false,
+    isSignup,
     loggedIn: false,
     searchInput: '',
     isLogged,

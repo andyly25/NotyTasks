@@ -9,6 +9,7 @@ const callEventListeners = () => {
   $('#main-content').on('submit', '.login-form', handlers.handleLoginPressed);
   $('#main-content').on('submit', '.createtask-form', handlers.handlePostTaskPressed);
   $('#main-content').on('submit', '.createtask-edit-form', handlers.handleEditSubmitPressed);
+  $('#main-content').on('click', '.user-signup', handlers.handleSignupRedirect);
   $('#main-content').on('click', '.task-add', handlers.handleAddTaskPressed);
   $('#main-content').on('click', '.task-view', handlers.handleViewTaskPressed);
   $('#main-content').on('click', '.close', handlers.handleCloseModal);
