@@ -149,7 +149,10 @@ function separateTasks (tasks) {
   return tasks.map((task) => {
     return `
       <li class="card task" data-id="${task.id}">
-        <header class="card-header" style="background-image: url(${task.image});">
+        <header class="card-header" 
+                style="background-image: url(${task.image});" 
+                role="banner"
+        >
           <span class="card-title ${task.completed ? 'card-red' : 'card-green'}">
             <h3>${task.title}</h3>
             <label>
@@ -219,15 +222,17 @@ function singleTaskModal () {
 
   return `
     <!-- Modal content -->
-    <div class="modal-content">
+    <div class="modal-content" role="section">
       <div class="modal-header ${task.completed ? 'card-red' : 'card-green'}">
         <span class="close">&times;</span>
         <h2>${task.title}</h2>
       </div>
       <div class="modal-body">
         <h2>Category: ${task.category}</h2>
-        <img src=${task.image} height="300px" width="300px"
+        <img src=${task.image} 
+          height="300px" width="300px"
           onerror="this.onerror=null;this.src='./missing.jpeg';"
+          alt="${task.title} image"
         >
         <p>${task.content}</p>
         <p> 
@@ -239,23 +244,6 @@ function singleTaskModal () {
         <input class="task-mail normal-button" type="button" value="Send to Email">
       </div>
     </div>
-  `;
-}
-
-// viewing an individual task
-function singleTaskScreen () {
-  const task = store.toEditTask[0];
-  return `
-    <h2>Title: ${task.title}</h2>
-    <h2>Category: ${task.category}</h2>
-    <img src=${task.image} height="300px" width="300px"
-      onerror="this.onerror=null;this.src='./missing.jpeg';"
-    >
-    <p>${task.content}
-    <h2>Date: ${moment(task.date).format('MM/DD/YYYY')}</h2>  
-    <h2>Time: ${moment(task.time, 'HH:mm').format('hh:mm A')}</h2>
-    <input class="task-mail normal-button" type="button" value="Send to Email">
-    <input class="return-home normal-button" type="button" value="return home">
   `;
 }
 

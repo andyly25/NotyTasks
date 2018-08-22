@@ -9,7 +9,7 @@ const loginForm = {
       name: 'username',
       class: 'username-entry',
       placeholder: 'Username here',
-      value: 'notytask@gmail.com'
+      value: ''
     },
     {
       labelFor: 'password',
@@ -18,7 +18,7 @@ const loginForm = {
       name: 'password',
       class: 'password-entry',
       placeholder: 'Password here',
-      value: 'someuser'
+      value: ''
     }
   ]
 };
@@ -76,7 +76,7 @@ const createtaskForm = {
       name: 'title',
       class: 'title-entry',
       placeholder: 'Enter title of task',
-      value: 'testing'
+      value: ''
     },
     {
       labelFor: 'image',
@@ -85,7 +85,7 @@ const createtaskForm = {
       name: 'image',
       class: 'image-entry',
       placeholder: 'Optional, enter image URL',
-      value: 'https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg'
+      value: ''
     },
     {
       labelFor: 'content',
@@ -94,7 +94,7 @@ const createtaskForm = {
       name: 'content',
       class: 'content-entry',
       placeholder: 'Text content here',
-      value: 'testing'
+      value: ''
     },
     // datetime-local has limited support, best use date and time separately
     {

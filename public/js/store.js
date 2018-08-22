@@ -49,7 +49,6 @@ const store = (function () {
     }
     if (this.searchInput !== '') {
       arr = arr.filter(task => task.title === this.searchInput);
-      // this.searchInput = '';
     }
     // implement search similar to checkbox
     return _.groupBy(arr, 'category');
