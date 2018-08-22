@@ -4,6 +4,7 @@ const liForm = (input) => {
   if (store.isEdit) {
     inputValue = input.value ? store.toEditTask[0][input.labelFor] : '';
   }
+  console.log(input.labelFor);
   return `
     <li class="li-${input.class}">
       <label for="${input.labelFor}">${input.label}</label>
@@ -13,6 +14,7 @@ const liForm = (input) => {
         class="${input.class}" 
         placeholder="${input.placeholder}"
         value="${input.value ? inputValue : ''}"
+        ${input.labelFor === 'title' ? 'required' : ''}
         >
     </li>
   `;
@@ -35,6 +37,24 @@ const formFieldset = (form) => {
       </fieldset>
   `;
 };
+
+// This is what I'll use to edit the input into textarea
+function contentTextarea () {
+  const content = store.toEditTask[0].content || '';
+  return `
+    <li>
+      <label for="content">Content:</label>
+      <textarea  
+        name="content" 
+        class="content-entry" 
+        placeholder="Enter in your task content here"
+        rows="10"
+        value=""
+        required
+        >${content}</textarea>
+    </li>
+  `;
+}
 
 // creates the basic form for signin, signup
 const createForm = (form) => {
@@ -232,22 +252,6 @@ function singleTaskScreen () {
     <h2>Time: ${moment(task.time, 'HH:mm').format('hh:mm A')}</h2>
     <input class="task-mail normal-button" type="button" value="Send to Email">
     <input class="return-home normal-button" type="button" value="return home">
-  `;
-}
-
-function contentTextarea () {
-  const content = store.toEditTask[0].content || '';
-  return `
-    <li>
-      <label for="content">Content:</label>
-      <textarea  
-        name="content" 
-        class="content-entry" 
-        placeholder="Enter in your task content here"
-        rows="10"
-        value=""
-        >${content}</textarea>
-    </li>
   `;
 }
 

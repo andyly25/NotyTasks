@@ -19,13 +19,16 @@ In the end the thing that it has in common is that you edit and manage tasks.
 - ~~DELETE: ask if users really want to delete~~
 - possibly allow users to upload image
 - ~~notifications to notify completion~~
-- make content box of forms larger
+- ~~make content box of forms larger~~
+  - HIGHLIGHT missing fields
 - for task preview, show snippet of content box
 - ~~show completed has 1st task stretched out: flex related~~
-- add task to far right
-- adjust search box to be a bit bigger
-- get rid of close button in view task
-- more margin to send to email button
+- ~~add task to far right~~
+- fix the show completed
+- ~~adjust search box to be a bit bigger~~
+- ~~get rid of close button in view task~~
+- ~~more margin/padding to send to email button~~
+- color code completed and pending tasks
 - landing page
   - sales pitch
   - login sign up side by side maybe?

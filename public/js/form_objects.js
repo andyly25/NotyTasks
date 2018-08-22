@@ -125,7 +125,7 @@ const createtaskForm = {
       name: 'category',
       class: 'category-entry',
       placeholder: '',
-      value: 't'
+      value: ''
     }
   ]
 };

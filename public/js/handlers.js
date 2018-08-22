@@ -17,13 +17,14 @@ const handlers = (function () {
 
   // grabbing form information
   const getFormInfo = (form) => {
+    const categoryEntry = form.find('.category-entry').val();
     return {
       title: form.find('.title-entry').val(),
       image: form.find('.image-entry').val(),
       content: form.find('.content-entry').val(),
       date: form.find('.date-entry').val(),
       time: form.find('.time-entry').val(),
-      category: form.find('.category-entry').val()
+      category: categoryEntry === '' ? 'default' : categoryEntry
     };
   };
 
