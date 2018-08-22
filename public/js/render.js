@@ -4,7 +4,9 @@ const liForm = (input) => {
   if (store.isEdit) {
     inputValue = input.value ? store.toEditTask[0][input.labelFor] : '';
   }
-  console.log(input.labelFor);
+
+  const acceptImage = 'accept="image/*"';
+
   const required = ['username', 'password', 'title'];
   return `
     <li class="li-${input.class}">
@@ -13,6 +15,7 @@ const liForm = (input) => {
         type="${input.type}" 
         name="${input.name}" 
         class="${input.class}" 
+        ${input.labelFor === 'image' ? acceptImage : ''}
         placeholder="${input.placeholder}"
         value="${input.value ? inputValue : ''}"
         ${required.includes(input.labelFor) ? 'required' : ''}

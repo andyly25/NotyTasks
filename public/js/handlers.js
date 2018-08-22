@@ -105,6 +105,7 @@ const handlers = (function () {
 
     const taskElement = $(e.currentTarget);
     const taskInput = getFormInfo(taskElement);
+    // const fileUpload = taskElement.find('.file-upload').val();
 
     // POST a task
     api.post('/tasks', taskInput)

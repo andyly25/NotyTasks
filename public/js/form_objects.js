@@ -79,9 +79,6 @@ const createtaskForm = {
       value: 'testing'
     },
     {
-      // type: 'file',
-      // name: 'image',
-      // class: 'image-entry file-input',
       labelFor: 'image',
       label: 'Image:',
       type: 'text',
