@@ -14,7 +14,6 @@ const createAuthToken = function (user) {
 
 // user providing a username and password to login
 exports.postLogin = (req, res) => {
-  console.log(req.user);
   const authToken = createAuthToken(req.user.serialize());
   res.json({ authToken });
 };

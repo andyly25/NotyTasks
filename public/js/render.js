@@ -18,35 +18,6 @@ const liForm = (input) => {
   `;
 };
 
-// const taskFieldset = (form) => {
-//   console.log(store.toEditTask);
-//   const content = store.toEditTask[0].content || '';
-//   return `
-//     <fieldset>
-//       <legend>${form.legend}</legend>
-//         <ul class="flex-outer">
-//         ${form.inputs.map((input) => {
-//           return liForm(input);
-//           // .join('') removed the random commas between list elements
-//           }).join('')}
-//           <li>
-//             <label for="content">Content:</label>
-//             <textarea  
-//               name="content" 
-//               class="task-content" 
-//               placeholder="Enter in your task content here"
-//               rows="10"
-//               value="${content ? content : ''}"
-//               ></textarea>
-//           </li>
-//           <li>
-//             <button type="submit">Submit</button>
-//           </li>
-//         </ul>
-//       </fieldset>
-//   `;
-// };
-
 // Handles the elements within the fieldset
 const formFieldset = (form) => {
   return `
@@ -198,16 +169,17 @@ function tasksScreen () {
 
   const taskList = separateCategories(categorizedTasks);
   const taskPage = `
-    <input class="task-add normal-button" type="button" value="Add Task">
-    <input class="task-search" type="search" name="q"
-      placeholder="Search for tasks..."
-      aria-label="Search through tasks"
-    >
-    <input class="show-completed" id="show-completed" type="checkbox" 
-      ${store.showCompleted ? "checked" : ""}
-    >
-    <label for="show-completed">Show Completed</label>
-    
+    <ul class="task-inputs">
+      <input class="task-search" type="search" name="q"
+        placeholder="Search for tasks..."
+        aria-label="Search through tasks"
+      >
+      <input class="show-completed" id="show-completed" type="checkbox" 
+        ${store.showCompleted ? "checked" : ""}
+      >
+      <label for="show-completed">Show Completed</label>
+      <input class="task-add normal-button" type="button" value="Add Task">
+    </ul>
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <p> task content will be in here!</p>

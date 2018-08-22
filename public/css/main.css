@@ -207,7 +207,6 @@ body {
 
 /* CSS FOR MODAL */
 
-
 /* The Modal (background) */
 
 .modal {
@@ -550,9 +549,18 @@ fieldset legend {
   background: #595959;
 }
 
+.task-search {
+  padding: 10px;
+  width: 40%;
+}
+
+.task-inputs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
 /* CSS SNACKBAR */
-
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 
@@ -747,9 +755,11 @@ However, delay the fade out process for 2.5 seconds */
     margin-right: 20px;
   }
 
-  .left,
-  .right {
-    
+  .task-search {
+    width: 100%;
+  }
+  .task-inputs {
+    padding-left: 0;
   }
 }
 
@@ -757,6 +767,10 @@ However, delay the fade out process for 2.5 seconds */
   /* Style adjustments for viewports that meet the condition */
   .flex-outer>li>label+* {
     flex: 1 0 220px;
+  }
+
+  .task-search {
+    width: 40%;
   }
 }
 
