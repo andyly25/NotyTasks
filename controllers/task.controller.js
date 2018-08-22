@@ -1,12 +1,5 @@
 const Task = require('../models/task.model');
 const User = require('../models/user.model');
-const cloudinary = require('cloudinary');
-
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_KEY,
-  api_secret: process.env.CLOUD_SECRET
-});
 
 // Using GET
 exports.getTasks = (req, res) => {
