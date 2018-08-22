@@ -5,6 +5,7 @@ const liForm = (input) => {
     inputValue = input.value ? store.toEditTask[0][input.labelFor] : '';
   }
   console.log(input.labelFor);
+  const required = ['username', 'password', 'title'];
   return `
     <li class="li-${input.class}">
       <label for="${input.labelFor}">${input.label}</label>
@@ -14,7 +15,7 @@ const liForm = (input) => {
         class="${input.class}" 
         placeholder="${input.placeholder}"
         value="${input.value ? inputValue : ''}"
-        ${input.labelFor === 'title' ? 'required' : ''}
+        ${required.includes(input.labelFor) ? 'required' : ''}
         >
     </li>
   `;
@@ -146,7 +147,7 @@ function separateTasks (tasks) {
     return `
       <li class="card task" data-id="${task.id}">
         <header class="card-header" style="background-image: url(${task.image});">
-          <span class="card-title">
+          <span class="card-title ${task.completed ? 'card-red' : 'card-green'}">
             <h3>${task.title}</h3>
             <label>
               <input 
@@ -189,7 +190,7 @@ function tasksScreen () {
 
   const taskList = separateCategories(categorizedTasks);
   const taskPage = `
-    <ul class="task-inputs">
+    <div class="task-inputs">
       <input class="task-search" type="search" name="q"
         placeholder="Search for tasks..."
         aria-label="Search through tasks"
@@ -199,7 +200,7 @@ function tasksScreen () {
       >
       <label for="show-completed">Show Completed</label>
       <input class="task-add normal-button" type="button" value="Add Task">
-    </ul>
+    </div>
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <p> task content will be in here!</p>
@@ -216,7 +217,7 @@ function singleTaskModal () {
   return `
     <!-- Modal content -->
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header ${task.completed ? 'card-red' : 'card-green'}">
         <span class="close">&times;</span>
         <h2>${task.title}</h2>
       </div>
@@ -231,7 +232,7 @@ function singleTaskModal () {
              ${moment(task.time, 'HH:mm').format('hh:mm A')}
         </p>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer ${task.completed ? 'card-red' : 'card-green'}">
         <input class="task-mail normal-button" type="button" value="Send to Email">
       </div>
     </div>

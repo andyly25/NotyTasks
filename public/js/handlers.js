@@ -40,14 +40,15 @@ const handlers = (function () {
         store.addAllTasks(tasks);
         store.screen = 'tasks';
         render();
-        snackBarMessage('User successfully logged in!');
+        snackBarMessage('User Successfully Logged In');
       })
       .catch((err) => {
         console.log(err);
-        snackBarMessage('Error logging in, mispelled username or password?');
+        snackBarMessage('Error Logging In, Mispelled Username or Password?');
       });
   };
 
+  // allows for the toggling at user login screen from login to sign in
   function handleSignupRedirect (e) {
     store.isSignup();
     render();
@@ -71,11 +72,11 @@ const handlers = (function () {
       .then((res) => {
         signupElement[0].reset();
         loginUser({ username, password });
-        snackBarMessage('signup success!');
+        snackBarMessage('Signup Success');
       })
       .catch((err) => {
         console.log(err);
-        snackBarMessage('Something went wrong with the sign up process');
+        snackBarMessage('Something Went Wrong With The Sign Up Process');
       });
   }
 
@@ -87,7 +88,6 @@ const handlers = (function () {
       username: loginElement.find('.username-entry').val(),
       password: loginElement.find('.password-entry').val()
     };
-    // rename create later possibly post
     loginUser(loginInfo);
   }
 
@@ -96,7 +96,7 @@ const handlers = (function () {
     e.preventDefault();
     store.isLogged();
     window.location.href = '/auth/logout';
-    snackBarMessage('user has successfully logged out');
+    snackBarMessage('User Has Successfully Logged Out');
   }
 
   // create Task Handler
@@ -112,7 +112,7 @@ const handlers = (function () {
         store.addToTasks(res);
         store.screen = 'tasks';
         render();
-        snackBarMessage('new task has been added!');
+        snackBarMessage('New Task Has Been Added');
       })
       .catch((err) => { console.log(err); });
   }
@@ -153,7 +153,7 @@ const handlers = (function () {
         store.isEditTask();
         store.screen = 'tasks';
         render();
-        snackBarMessage('task has been successfully edited!');
+        snackBarMessage('Task Has Been Successfully Edited');
       });
   }
 
@@ -199,8 +199,7 @@ const handlers = (function () {
 
     api.post('/send', mailContent)
       .then((res) => {
-    snackBarMessage('user has successfully logged out');
-        snackBarMessage('mail has been successfully sent!');
+        snackBarMessage('Mail Has Been Successfully Sent');
       })
       .catch((err) => { console.log('mail error', err); });
   }
@@ -244,7 +243,7 @@ const handlers = (function () {
         .then(() => {
           store.findAndRemove(taskId);
           render();
-          snackBarMessage('task has been permanently deleted');
+          snackBarMessage('Task Has Been Permanently Deleted');
         });
     }
   }

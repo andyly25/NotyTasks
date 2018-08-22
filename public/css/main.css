@@ -388,7 +388,6 @@ img {
 }
 
 .card .card-title {
-  background: rgba(157, 187, 63, 0.85);
   padding: 3.5% 0 2.5% 0;
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
@@ -399,6 +398,14 @@ img {
   display: flex;
   justify-content: space-around;
   /* flex-wrap: wrap; */
+}
+
+.card-green {
+  background: rgba(157, 187, 63, 0.85);
+}
+
+.card-red {
+  background: rgba(183, 0, 148, 0.75);
 }
 
 .card .card-title h3 {
@@ -448,9 +455,14 @@ img {
   box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
 }
 
-.card:hover .card-title,
-.card:focus .card-title {
+.card:hover .card-green,
+.card:focus .card-green {
   background: rgba(157, 187, 63, 0.95);
+}
+
+.card:hover .card-red,
+.card:focus .card-red {
+  background: rgba(183, 0, 148, 0.90);
 }
 
 .card:hover .card-meta,
@@ -554,10 +566,17 @@ fieldset legend {
   width: 40%;
 }
 
+input[type="checkbox"]{
+  transform: scale(1.5);
+  cursor: pointer;
+
+}
+
 .task-inputs {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 /* CSS SNACKBAR */
@@ -761,6 +780,10 @@ However, delay the fade out process for 2.5 seconds */
   .task-inputs {
     padding-left: 0;
   }
+
+  .show-completed {
+    margin-right: 20px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -771,6 +794,10 @@ However, delay the fade out process for 2.5 seconds */
 
   .task-search {
     width: 40%;
+  }
+
+  .show-completed {
+    margin: 0 10px 0 20px;
   }
 }
 
