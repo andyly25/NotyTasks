@@ -1,6 +1,6 @@
 const loginForm = {
   classes: 'login-css login-form',
-  legend: 'login',
+  legend: 'Login',
   inputs: [
     {
       labelFor: 'username',

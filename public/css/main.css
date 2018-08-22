@@ -123,15 +123,15 @@ body {
 
 main {
   flex-grow: 2;
-  background-color: #B4BD2F;
+  background-color: #4282D3;
 }
 
 header {
-  background: #9AA400;
+  background: #05326D;
 }
 
 footer {
-  background: #9AA400;
+  background: #05326D;
   padding: 10px;
 }
 
@@ -314,7 +314,7 @@ img {
   margin: 0 auto;
   padding: 1.5%;
   width: 90%;
-  background: #ECFC00;
+  background: #6997D3;
 }
 
 .cards {

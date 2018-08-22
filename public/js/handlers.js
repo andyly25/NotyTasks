@@ -18,9 +18,10 @@ const handlers = (function () {
   // grabbing form information
   const getFormInfo = (form) => {
     const categoryEntry = form.find('.category-entry').val();
+    const imageEntry = form.find('.image-entry').val();
     return {
       title: form.find('.title-entry').val(),
-      image: form.find('.image-entry').val(),
+      image: imageEntry === '' ? '../missing.jpeg' : imageEntry,
       content: form.find('.content-entry').val(),
       date: form.find('.date-entry').val(),
       time: form.find('.time-entry').val(),
@@ -153,6 +154,7 @@ const handlers = (function () {
         store.isEditTask();
         store.screen = 'tasks';
         render();
+        store.toEditTask = [];
         snackBarMessage('Task Has Been Successfully Edited');
       });
   }
