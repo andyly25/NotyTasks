@@ -17,7 +17,7 @@ const loginForm = {
       type: 'password',
       name: 'password',
       class: 'password-entry',
-      placeholder: 'Password here',
+      placeholder: 'Password of length 8 or more',
       value: ''
     }
   ]

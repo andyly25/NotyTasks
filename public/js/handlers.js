@@ -77,7 +77,7 @@ const handlers = (function () {
       })
       .catch((err) => {
         console.log(err);
-        snackBarMessage('Username Taken or Under Eight Characters');
+        snackBarMessage('Username Taken or Password Under Eight Characters');
       });
   }
 

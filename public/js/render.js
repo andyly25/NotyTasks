@@ -6,8 +6,9 @@ const liForm = (input) => {
   }
 
   const acceptImage = 'accept="image/*"';
+  const passwordLen = `minlength="8"`;
 
-  const required = ['username', 'password', 'title'];
+  const required = ['first-name', 'last-name', 'username', 'password', 'title', 'content'];
   return `
     <li class="li-${input.class}">
       <label for="${input.labelFor}">${input.label}</label>
@@ -19,6 +20,7 @@ const liForm = (input) => {
         placeholder="${input.placeholder}"
         value="${input.value ? inputValue : ''}"
         ${required.includes(input.labelFor) ? 'required' : ''}
+        ${input.labelFor === 'password' ? passwordLen : ''}
         >
     </li>
   `;
