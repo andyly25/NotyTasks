@@ -89,7 +89,7 @@ function loginSigninScreen () {
           <li>Create Tasks</li>
           <li>Customize tasks with images</li>
           <li>E-mail the task to yourself as a reminder</li>
-          <li>sneak peek with dummy account (username: someuser@gmail.com password: someuser)
+          <li>Sneak peek with dummy account (username: notytask@gmail.com password: someuser)
           <li>Sign up now if you haven't yet!</li>
         </ol>
         <input class="user-signup normal-button" type="button" value="Sign Up">
@@ -127,7 +127,7 @@ function editTaskScreen () {
   return `
     <h2>Edit Task Screen</h2>
     <section class="edit-task-screen">
-      ${createEditForm(createtaskForm)}
+      ${createEditForm(createeditForm)}
     </section>
   `;
 }
@@ -136,7 +136,7 @@ function editTaskScreen () {
 function separateCategories (obj) {
   return _.map(obj, (arrayTasks) => {
     return `
-      <h2>Category: ${arrayTasks[0].category}</h2>
+      <h2>Category: ${arrayTasks[0].category} (${arrayTasks.length} tasks)</h2>
       <ul class="cards">
       ${separateTasks(arrayTasks).join('')}
       </ul>
@@ -201,10 +201,10 @@ function tasksScreen () {
         placeholder="Search for tasks..."
         aria-label="Search through tasks"
       >
+      <label for="show-completed">Show Completed</label>
       <input class="show-completed" id="show-completed" type="checkbox" 
         ${store.showCompleted ? "checked" : ""}
       >
-      <label for="show-completed">Show Completed</label>
       <input class="task-add normal-button" type="button" value="Add Task">
     </div>
     <!-- The Modal -->

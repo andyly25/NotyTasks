@@ -9,7 +9,7 @@ const loginForm = {
       name: 'username',
       class: 'username-entry',
       placeholder: 'Username here',
-      value: ''
+      value: 'notytask@gmail.com'
     },
     {
       labelFor: 'password',
@@ -18,7 +18,7 @@ const loginForm = {
       name: 'password',
       class: 'password-entry',
       placeholder: 'Password here',
-      value: ''
+      value: 'someuser'
     }
   ]
 };
@@ -123,6 +123,68 @@ const createtaskForm = {
       class: 'category-entry',
       placeholder: '',
       value: ''
+    }
+  ]
+};
+
+const createeditForm = {
+  classes: 'createtask-css createtask-form',
+  legend: 'Create Task',
+  inputs: [
+    {
+      labelFor: 'title',
+      label: 'Title:',
+      type: 'text',
+      name: 'title',
+      class: 'title-entry',
+      placeholder: 'Enter title of task',
+      value: 'default'
+    },
+    {
+      labelFor: 'image',
+      label: 'Image:',
+      type: 'text',
+      name: 'image',
+      class: 'image-entry',
+      placeholder: 'Optional, enter image URL',
+      value: 'missing.png'
+    },
+    {
+      labelFor: 'content',
+      label: 'Content:',
+      type: 'text',
+      name: 'content',
+      class: 'content-entry',
+      placeholder: 'Text content here',
+      value: 'lorem ipsum'
+    },
+    // datetime-local has limited support, best use date and time separately
+    {
+      labelFor: 'date',
+      label: 'Date:',
+      type: 'date',
+      name: 'date',
+      class: 'date-entry',
+      placeholder: '',
+      value: moment().add(1, 'day').format('YYYY-MM-DD')
+    },
+    {
+      labelFor: 'time',
+      label: 'Time:',
+      type: 'time',
+      name: 'time',
+      class: 'time-entry',
+      placeholder: '',
+      value: moment().format('HH:mm')
+    },
+    {
+      labelFor: 'category',
+      label: 'Category:',
+      type: 'text',
+      name: 'category',
+      class: 'category-entry',
+      placeholder: '',
+      value: 'default'
     }
   ]
 };

@@ -76,7 +76,7 @@ const handlers = (function () {
       })
       .catch((err) => {
         console.log(err);
-        snackBarMessage('Something Went Wrong With The Sign Up Process');
+        snackBarMessage('Username Taken or Under Eight Characters');
       });
   }
 
