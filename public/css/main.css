@@ -156,10 +156,11 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 0 20px;
 }
 
 .main-nav input {
-  margin: 40px;
+  margin: 10px;
   border-radius: 5px;
   display: block;
   padding: 15px;
@@ -172,7 +173,7 @@ body {
 
 .logo {
   cursor: pointer;
-  margin-left: 40px;
+  margin-left: 20px;
   text-decoration: none;
   transform: perspective(2.5em) rotateX(15deg) scaleY(0.8);
   transition: all 0.5s;
