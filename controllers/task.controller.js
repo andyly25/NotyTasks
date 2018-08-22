@@ -8,10 +8,6 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET
 });
 
-exports.uploadImage = (req, res) => {
-  console.log(req.body);
-};
-
 // Using GET
 exports.getTasks = (req, res) => {
   const userId = req.user.id;

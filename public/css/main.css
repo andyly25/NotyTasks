@@ -315,7 +315,6 @@ img {
   padding: 1.5%;
   width: 90%;
   background: #ECFC00;
-  /* background: url("../notepage.png") no-repeat fixed center; */
 }
 
 .cards {
@@ -387,7 +386,6 @@ img {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  /* flex-wrap: wrap; */
 }
 
 .card-green {

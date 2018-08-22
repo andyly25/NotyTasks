@@ -40,7 +40,7 @@ exports.postMail = (req, res) => {
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
-      res.status(201).json({messageAlert: 'It worked'});
+      res.status(201).json({ messageAlert: 'It worked' });
     }
   });
 };
