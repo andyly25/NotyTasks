@@ -252,49 +252,18 @@ const handlers = (function () {
     }
   }
 
-  function handleOpenImageModal () {
-    document.getElementById('myModal2').style.display = 'block';
+  // opens light box
+  function handleOpenLightbox (e) {
+    e.preventDefault();
+    const image = $(this).attr('href');
+    $('html').addClass('no-scroll');
+    $('body').append(`<div class="lightbox-opened"><img src="${image}"></div>`);
   }
 
-  function handleCloseImageModal () {
-    const modal = document.getElementById('myModal2');
-    modal.style.display = 'none';
-  }
-
-  function handlePlusSlides (e) {
-    const taskElement = $(e.currentTarget);
-    const imageNum = taskElement.closest('.next').data('num');
-    showSlides(store.slideIndex += 1);
-  }
-
-  function handleMinusSlides (e) {
-    const taskElement = $(e.currentTarget);
-    const imageNum = taskElement.closest('.prev').data('num');
-    showSlides(store.slideIndex -= 1);
-  }
-
-  function handleCurrentSlide (e) {
-    const taskElement = $(e.currentTarget);
-    const imageNum = taskElement.closest('.demo').data('num');
-    showSlides(store.slideIndex = imageNum);
-  }
-
-  function showSlides (n) {
-    let i;
-    const slides = document.getElementsByClassName("mySlides");
-    const dots = document.getElementsByClassName("demo");
-    const captionText = document.getElementById("caption");
-    if (n > slides.length) { store.slideIndex = 1; }
-    if (n < 1) { store.slideIndex = slides.length; }
-    for (i = 0; i < slides.length; i += 1) {
-      slides[i].style.display = 'none';
-    }
-    for (i = 0; i < dots.length; i += 1) {
-      dots[i].className = dots[i].className.replace(' active', '');
-    }
-    slides[store.slideIndex - 1].style.display = 'block';
-    dots[store.slideIndex - 1].className += ' active';
-    captionText.innerHTML = dots[store.slideIndex - 1].alt;
+  // close lightbox
+  function handleCloseLightbox () {
+    $('html').removeClass('no-scroll');
+    $('.lightbox-opened').remove();
   }
 
   return {
@@ -315,11 +284,7 @@ const handlers = (function () {
     handleTaskSearch,
     handleEditSubmitPressed,
     handleMailTaskPressed,
-    handleOpenImageModal,
-    handleCloseImageModal,
-    handlePlusSlides,
-    handleMinusSlides,
-    handleCurrentSlide,
-    showSlides
+    handleOpenLightbox,
+    handleCloseLightbox
   };
 }());

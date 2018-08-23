@@ -101,6 +101,5 @@ const store = (function () {
     updateTask,
     categorizeTasks,
     screen: 'login',
-    slideIndex: 1
   };
 }());

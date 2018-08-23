@@ -87,48 +87,14 @@ const imageArray = [
   '../Assets/sampleImage5.png'
 ];
 
-const imageLightbox = () => {
-  return `
-    <div class="row">
-      ${imageArray.map((image, num) => {
-        return `
-          <div class="column">
-            <img src="${image}" data-num="${num}" class="modal-image hover-shadow cursor">
-          </div>
-        `;
-      })}
-      
-    </div>
-    <div id="myModal2" class="modal2">
-      <span class="modal-close">&times;</span>
-      <div class="modal-content2" role="section">
-        ${imageArray.map((image, num) => {
-          return `
-            <div class="mySlides">
-              <div class="numbertext">${num}/${imageArray.length}</div>
-              <img src="${image}" style="width:100%">
-            </div>
-          `;
-        })}
-        
-        <a class="prev" data-num="-1">&#10094;</a>
-        <a class="next" data-num="1">&#10095;</a>
-
-        <div class="caption-container">
-          <p id="caption"></p>
-        </div>
-
-        ${imageArray.map((image, num) => {
-          return `
-            <div class="column">
-              <img class="demo cursor" src="${image}" style="width:100%" data-num="${num}" alt="Notytask image ${num}">
-            </div>
-          `;
-        })}
-
-      </div>
-    </div>
-  `;
+const lightBoxImages = () => {
+  return imageArray.map((image) => {
+    return `
+      <a href="${image}" class="open-lightbox">
+        <img src="${image}" class="lb-thumbnail">
+      </a>
+    `;
+  }).join('');
 };
 
 // creates login sign in form
@@ -151,7 +117,9 @@ function loginSigninScreen () {
         ${store.needSignup ? createForm(signupForm) : createForm(loginForm)}
       </div>
     </section>
-    ${imageLightbox()}
+    <section class="lightbox-section" role="region">
+      ${lightBoxImages()}
+    </section>
   `;
 }
 
