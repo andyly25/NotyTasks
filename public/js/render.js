@@ -80,10 +80,51 @@ const createEditForm = (form) => {
   `;
 };
 
+function createSlider () {
+  return `
+    <div class="slider">
+        <a href="#slide-1">1</a>
+        <a href="#slide-2">2</a>
+        <a href="#slide-3">3</a>
+        <a href="#slide-4">4</a>
+        <a href="#slide-5">5</a>
+
+        <div class="slides">
+          <div id="slide-1">
+            <img src="../missing.jpeg" 
+              alt="sample image"
+            >
+          </div>
+          <div id="slide-2">
+            <img src="../Assets/sampleImage2.jpg" 
+              alt="sample image"
+            >
+          </div>
+          <div id="slide-3">
+            <img src="../Assets/sampleImage1.png" 
+              alt="sample image"
+            >
+          </div>
+          <div id="slide-4">
+            <img src="../Assets/sampleImage2.jpg" 
+              alt="sample image"
+            >
+          </div>
+          <div id="slide-5">
+            <img src="../Assets/sampleImage1.png" 
+              alt="sample image"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 // creates login sign in form
 function loginSigninScreen () {
   return `
-    <section class="login-signin">
+    <section class="login-signin" role="region">
       <div class="left">
         <h2> Welcome to Notytask!</h2>
         <p> As a user, you can </p>
@@ -95,7 +136,7 @@ function loginSigninScreen () {
           <li>Sign up now if you haven't yet!</li>
         </ol>
         <input class="user-signup normal-button" type="button" value="Sign Up">
-      </div>
+        ${createSlider()}
       <div class="right">
         ${store.needSignup ? createForm(signupForm) : createForm(loginForm)}
       </div>
