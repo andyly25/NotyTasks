@@ -14,10 +14,7 @@ const callEventListeners = () => {
   $('#main-content').on('click', '.task-mail', handlers.handleMailTaskPressed);
   $('#main-content').on('click', '.task-edit', handlers.handleEditTaskPressed);
   $('#main-content').on('click', '.return-home', handlers.handleHomePressed);
-  // handleOpenImageModal
-  // handleCloseImageModal
-  // handlePlusSlides
-  // handleCurrentSlide
+
   $('#main-content').on('click', '.modal-image', handlers.handleOpenImageModal);
   $('#main-content').on('click', '.modal-close', handlers.handleCloseImageModal);
   $('#main-content').on('click', '.prev', handlers.handleMinusSlides);

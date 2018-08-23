@@ -123,7 +123,8 @@ const handlers = (function () {
   function handleHomePressed (e) {
     store.screen = store.loggedIn ? 'tasks' : 'login';
     store.searchInput = '';
-    store.toEditTask = [];
+    store.resetToEditTask();
+    store.isEdit = false;
     render();
   }
 
@@ -155,7 +156,7 @@ const handlers = (function () {
         store.isEditTask();
         store.screen = 'tasks';
         render();
-        store.toEditTask = [];
+        store.resetToEditTask();
         snackBarMessage('Task Has Been Successfully Edited');
       });
   }

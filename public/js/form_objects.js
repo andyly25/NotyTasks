@@ -147,7 +147,7 @@ const createeditForm = {
       name: 'image',
       class: 'image-entry',
       placeholder: 'Optional, enter image URL',
-      value: 'missing.png'
+      value: '../missing.png'
     },
     {
       labelFor: 'content',

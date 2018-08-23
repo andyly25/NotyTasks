@@ -2,7 +2,8 @@
 const liForm = (input) => {
   let inputValue = input.value;
   if (store.isEdit) {
-    inputValue = input.value ? store.toEditTask[0][input.labelFor] : '';
+    inputValue = store.toEditTask[0][input.labelFor];
+    // console.log('inside if', inputValue);
   }
 
   const acceptImage = 'accept="image/*"';
@@ -16,9 +17,8 @@ const liForm = (input) => {
         type="${input.type}" 
         name="${input.name}" 
         class="${input.class}" 
-        ${input.labelFor === 'image' ? acceptImage : ''}
         placeholder="${input.placeholder}"
-        value="${input.value ? inputValue : ''}"
+        value="${inputValue}"
         ${required.includes(input.labelFor) ? 'required' : ''}
         ${input.labelFor === 'password' ? passwordLen : ''}
         >
@@ -181,7 +181,7 @@ function editTaskScreen () {
   return `
     <h2>Edit Task Screen</h2>
     <section class="edit-task-screen">
-      ${createEditForm(createeditForm)}
+      ${createEditForm(createtaskForm)}
     </section>
   `;
 }

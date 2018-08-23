@@ -33,6 +33,10 @@ const store = (function () {
     this.toEditTask[0].time = moment(this.toEditTask[0].time, 'HH:mm').format('HH:mm');
   }
 
+  function resetToEditTask () {
+    this.toEditTask = emptyTaskObj;
+  }
+
   function updateTask (updatedTask) {
     this.tasks = this.tasks.map((task) => {
       if (updatedTask.id === task.id) {
@@ -84,6 +88,7 @@ const store = (function () {
     isLogged,
     textTruncate,
     isEditTask,
+    resetToEditTask,
     isEdit: false,
     tasks: [],
     taskId: '',
