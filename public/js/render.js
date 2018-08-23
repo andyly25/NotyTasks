@@ -3,10 +3,8 @@ const liForm = (input) => {
   let inputValue = input.value;
   if (store.isEdit) {
     inputValue = store.toEditTask[0][input.labelFor];
-    // console.log('inside if', inputValue);
   }
 
-  const acceptImage = 'accept="image/*"';
   const passwordLen = `minlength="8"`;
 
   const required = ['first-name', 'last-name', 'username', 'password', 'title', 'content'];
@@ -110,15 +108,16 @@ function loginSigninScreen () {
           <li>E-mail the task to yourself as a reminder</li>
           <li>Sneak peek with dummy account (username: notytask@gmail.com password: someuser)
           <li>Sign up now if you haven't yet!</li>
+          <li>Click on the image thumbnails below to see how it looks</li>
         </ol>
         <input class="user-signup normal-button" type="button" value="Sign Up">
+          <section class="lightbox-section" role="region">
+        ${lightBoxImages()}
+    </section>
       </div>
       <div class="right">
         ${store.needSignup ? createForm(signupForm) : createForm(loginForm)}
       </div>
-    </section>
-    <section class="lightbox-section" role="region">
-      ${lightBoxImages()}
     </section>
   `;
 }
