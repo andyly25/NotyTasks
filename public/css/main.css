@@ -173,7 +173,8 @@ a {
 }
 
 .open-lightbox {
-  width: 40%;
+  /* has to use px or else won't wrap */
+  width: 600px;
   margin: 10px 0;
 }
 
