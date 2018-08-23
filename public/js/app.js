@@ -2,4 +2,5 @@
 $(() => {
   callEventListeners();
   render();
+  handlers.showSlides(store.slideIndex);
 });

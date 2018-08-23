@@ -95,6 +95,7 @@ const store = (function () {
     findById,
     updateTask,
     categorizeTasks,
-    screen: 'login'
+    screen: 'login',
+    slideIndex: 1
   };
 }());

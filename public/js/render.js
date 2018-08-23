@@ -80,46 +80,56 @@ const createEditForm = (form) => {
   `;
 };
 
-function createSlider () {
-  return `
-    <div class="slider">
-        <a href="#slide-1">1</a>
-        <a href="#slide-2">2</a>
-        <a href="#slide-3">3</a>
-        <a href="#slide-4">4</a>
-        <a href="#slide-5">5</a>
+const imageArray = [
+  '../Assets/sampleImage1.png',
+  '../Assets/sampleImage4.png',
+  '../Assets/sampleImage3.png',
+  '../Assets/sampleImage5.png'
+];
 
-        <div class="slides">
-          <div id="slide-1">
-            <img src="../missing.jpeg" 
-              alt="sample image"
-            >
+const imageLightbox = () => {
+  return `
+    <div class="row">
+      ${imageArray.map((image, num) => {
+        return `
+          <div class="column">
+            <img src="${image}" data-num="${num}" class="modal-image hover-shadow cursor">
           </div>
-          <div id="slide-2">
-            <img src="../Assets/sampleImage2.jpg" 
-              alt="sample image"
-            >
-          </div>
-          <div id="slide-3">
-            <img src="../Assets/sampleImage1.png" 
-              alt="sample image"
-            >
-          </div>
-          <div id="slide-4">
-            <img src="../Assets/sampleImage2.jpg" 
-              alt="sample image"
-            >
-          </div>
-          <div id="slide-5">
-            <img src="../Assets/sampleImage1.png" 
-              alt="sample image"
-            >
-          </div>
+        `;
+      })}
+      
+    </div>
+    <div id="myModal2" class="modal2">
+      <span class="modal-close">&times;</span>
+      <div class="modal-content2" role="section">
+        ${imageArray.map((image, num) => {
+          return `
+            <div class="mySlides">
+              <div class="numbertext">${num}/${imageArray.length}</div>
+              <img src="${image}" style="width:100%">
+            </div>
+          `;
+        })}
+        
+        <a class="prev" data-num="-1">&#10094;</a>
+        <a class="next" data-num="1">&#10095;</a>
+
+        <div class="caption-container">
+          <p id="caption"></p>
         </div>
+
+        ${imageArray.map((image, num) => {
+          return `
+            <div class="column">
+              <img class="demo cursor" src="${image}" style="width:100%" data-num="${num}" alt="Notytask image ${num}">
+            </div>
+          `;
+        })}
+
       </div>
     </div>
   `;
-}
+};
 
 // creates login sign in form
 function loginSigninScreen () {
@@ -136,11 +146,12 @@ function loginSigninScreen () {
           <li>Sign up now if you haven't yet!</li>
         </ol>
         <input class="user-signup normal-button" type="button" value="Sign Up">
-        ${createSlider()}
+      </div>
       <div class="right">
         ${store.needSignup ? createForm(signupForm) : createForm(loginForm)}
       </div>
     </section>
+    ${imageLightbox()}
   `;
 }
 
