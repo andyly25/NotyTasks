@@ -123,6 +123,7 @@ const handlers = (function () {
   function handleHomePressed (e) {
     store.screen = store.loggedIn ? 'tasks' : 'login';
     store.searchInput = '';
+    store.toEditTask = [];
     render();
   }
 

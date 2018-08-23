@@ -193,7 +193,7 @@ function separateTasks (tasks) {
     return `
       <li class="card task" data-id="${task.id}">
         <header class="card-header" 
-                style="background-image: url(${task.image}), url('../missing.jpeg');" 
+                style="background-image: url('../missing.jpeg'), url(${task.image}) ;" 
                 role="banner"
         >
           <span class="card-title ${task.completed ? 'card-red' : 'card-green'}">
