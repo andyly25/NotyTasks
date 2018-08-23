@@ -222,7 +222,7 @@ footer small {
   color: white;
 }
 
-img {
+.slider img {
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -473,6 +473,7 @@ img {
   position: relative;
   height: 175px;
   overflow: hidden;
+  /* background-image: url('../missing.jpeg'); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

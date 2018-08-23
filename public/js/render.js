@@ -193,7 +193,7 @@ function separateTasks (tasks) {
     return `
       <li class="card task" data-id="${task.id}">
         <header class="card-header" 
-                style="background-image: url(${task.image});" 
+                style="background-image: url(${task.image}), url('../missing.jpeg');" 
                 role="banner"
         >
           <span class="card-title ${task.completed ? 'card-red' : 'card-green'}">
@@ -273,8 +273,8 @@ function singleTaskModal () {
       <div class="modal-body">
         <h2>Category: ${task.category}</h2>
         <img src=${task.image} 
-          height="300px" width="300px"
-          onerror="this.onerror=null;this.src='./missing.jpeg';"
+          height="300px" width="350px"
+          onerror="this.onerror=null;this.src='../missing.jpeg';"
           alt="${task.title} image"
         >
         <p>${task.content}</p>
