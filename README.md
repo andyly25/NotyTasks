@@ -93,3 +93,8 @@ An image showing the tasks successfully sent to user's e-mail.
 - would like tasks organized by due dates
 - refactor the code
 - Prettify with CSS and things
+
+## Feedback:
+- The logo should be vertically centered on the landing page like it is when logged in.
+- You could shrink the height of the header once logged in, and it would probably look better. It is a bit tall for a nav bar.
+- The landing page is critical for drawing in a hiring manager or outside user. Right now the app looks much better when you're logged in then on landing. The thumbnail idea seems like it could be improved upon, as it seems like one too many clicks to have to see the opening images. Breaking up/laying out the text differently, the font size feels too small, and integrating some of the pictures into the text at full size would be more effective to me regarding UX.
